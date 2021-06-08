@@ -5,8 +5,9 @@
 	$username = 'root';
 	$password = 'root';
 	$database = 'application badges';
+	
 
-	if(isset($_POST['user_login']) && isset($_POST['user_password'])){
+	if(!empty($_POST['user_login']) && !empty($_POST['user_password'])){
 		$login = $_POST['user_login'];
 		$mdp = $_POST['user_password'];
 					
@@ -25,10 +26,10 @@
 			$_SESSION['Nom'] = $user_connecte["Prénom"]; 
 			$_SESSION['role'] = $user_connecte["Rôle"];
 			echo "Bonjour ",$_SESSION['Prenom']," ",$_SESSION['Nom']," ",$_SESSION['role']," ",$_SESSION['login']," ",$_SESSION['mdp'];
-			
+			header("Location: Accueil.html");
 		}
 		else{
-			header("Location: test.html?erreur=mauvaislog");
+			header("Location: test.php?erreur=mauvaislog");
 			
 		}
 					
@@ -36,7 +37,7 @@
 		mysqli_close($connexion);			
 	}
 	else{
-		header("Location: test.html?erreur=pasloginoumdp");
+		header("Location: test.php?erreur=pasloginoumdp");
 	}
 ?>
 

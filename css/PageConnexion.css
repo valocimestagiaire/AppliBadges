@@ -1,0 +1,41 @@
+.input-group>.input-group-prepend {
+    flex: 0 0 20%;
+}
+.input-group .input-group-text {
+    width: 100%;
+}
+.red-text{
+	color: red;
+}
+.blue-container{
+	background-color: #0e265d;
+}
+
+.cadre{
+	border-radius: 100px;
+}
+
+.border{
+	color: #c3ac66;
+	padding: 20px;
+	width: 300px;
+	text-align: center;
+	margin: auto;
+	margin-top: 50vh;
+	transform: translateY(-50%);
+	
+
+}
+.btn:hover{
+	background-color:#ffffff;
+	color:#c3ac66;
+	border-color: transparent;
+}
+.btn{
+	background-color:#c3ac66;
+	border-color: transparent;
+}
+
+.button{
+	text-align: center
+}
