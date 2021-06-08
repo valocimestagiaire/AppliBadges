@@ -26,7 +26,7 @@
 			$_SESSION['Nom'] = $user_connecte["Prénom"]; 
 			$_SESSION['role'] = $user_connecte["Rôle"];
 			echo "Bonjour ",$_SESSION['Prenom']," ",$_SESSION['Nom']," ",$_SESSION['role']," ",$_SESSION['login']," ",$_SESSION['mdp'];
-			header("Location: Accueil.html");
+			header("Location: Accueil.php");
 		}
 		else{
 			header("Location: test.php?erreur=mauvaislog");

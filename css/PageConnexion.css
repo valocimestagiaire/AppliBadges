@@ -12,13 +12,13 @@
 }
 
 .cadre{
-	border-radius: 100px;
+	border-radius: 10px 100px / 120px !important;
 }
 
 .border{
 	color: #c3ac66;
 	padding: 20px;
-	width: 300px;
+	width: 600px;
 	text-align: center;
 	margin: auto;
 	margin-top: 50vh;
