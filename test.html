@@ -1,8 +1,39 @@
+<!DOCTYPE html>
+
 <html>
 	<head>
-		<title>Page test</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="bootstrap-5.0.1-dist/bootstrap-5.0.1-dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/PageConnexion"/>
+		<title>Page de connexion</title>
 	</head>
 	<body>
-		<h1></h1>
+		<h1>Page de connexion à l'outil de gestion des badges</h1>
+		<pre><?phpvardump($_GET)?></pre>
+		<form method="POST" action="traitementConnexion.php">
+			<div>
+				<?php
+					if(isset($_GET['erreur'])){
+						echo $_GET['erreur'];
+						echo "oui";
+					}
+					else{
+						echo $_GET['erreur'];
+					}
+				?>
+			</div>
+			<div>
+				<label for="login">Login :</label>
+				<input type="text" id="login" name="user_login">
+			</div>
+			<div>
+				<label for="psswd">Password :</label>
+				<input type="password" id="psswd" name="user_password">
+			</div>
+
+			<div class="button">
+				<input type="submit" name="connexion" value="Connexion"/>
+			</div>
+		</form>
 	</body>
 </html>
