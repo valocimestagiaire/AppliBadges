@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link href="css/PageConnexion.css"/ rel="stylesheet">
-		<title>Identités</title>
+		<title>VALOCIME/ Application Badges - Identités</title>
 	</head>
 	<body>
 		<div class="container h-auto">
@@ -135,6 +135,7 @@
 							</br>
 							</br>
 							<div class="button ">
+								<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Retour"/>
 								<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Valider"/>
 							</div>
 						</div>

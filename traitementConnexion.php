@@ -29,7 +29,7 @@
 			header("Location: Accueil.php");
 		}
 		else{
-			header("Location: test.php?erreur=mauvaislog");
+			header("Location: Connexion.php?erreur=mauvaislog");
 			
 		}
 					
@@ -37,7 +37,7 @@
 		mysqli_close($connexion);			
 	}
 	else{
-		header("Location: test.php?erreur=pasloginoumdp");
+		header("Location: Connexion.php?erreur=pasloginoumdp");
 	}
 ?>
 
