@@ -1,6 +1,11 @@
 
 <?php
 	
+	session_start();
+	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+		header("Location: Connexion.php");
+	}
+	
 	$servername = 'localhost';
 	$username = 'root';
 	$password = 'root';
@@ -23,7 +28,8 @@
 		$fz = $_POST['FZ'];
 		$pass = $_POST['pass'];
 		$bureau = $_POST['bureau'];
-		$periode = $_POST['periode'];					
+		$periode = $_POST['periode'];
+		
 		$connexion = new mysqli($servername,$username,$password,$database);
 		if($connexion->connect_error){
 				die('Erreur : ' .$connexion->connect_error);
@@ -37,7 +43,7 @@
 			exit(0);
 		}
 		
-		$queryBadgeExiste = mysqli_query($connexion,"SELECT * FROM badge WHERE  ");
+		$queryBadgeExiste = mysqli_query($connexion,"SELECT * FROM badge WHERE Télécommande='$tele', Badge_Noir='$badgeN', Badge_Bleu='badgeB', Café='$badgeC'  ");
 		
 		$queryBadge = mysqli_query($connexion,"INSERT INTO badge (Télécommande,Badge_Noir,Badge_Bleu,Café,Alarme,Parking,Pass,Accès_Bureau,Période_accès,Bureau_FZ)
 															values('$tele','$badgeN','$badgeB','$badgeC','$verisure','$parking','$pass','$bureau','$periode','$fz')");

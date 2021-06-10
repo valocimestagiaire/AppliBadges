@@ -62,7 +62,7 @@
 				
 				$query = mysqli_query($connexion,"SELECT Nom,Prénom,Login,mdp,Rôle FROM utilisateurs");
 				foreach($query as $id){
-					echo"<tr><td>".$id['Nom']."</td><td>".$id['Prénom']."</td><td class='log'>".$id['Login']."</td><td>".$id['mdp']."</td><td>".$id['Rôle']."</td><td><button type='button' class='btn btn-warning'>Modifier</button> <button type='button' class='btn btn-danger'>Supprimer</button></td></tr>";
+					echo"<tr><td>".$id['Nom']."</td><td>".$id['Prénom']."</td><td class='log'>".$id['Login']."</td><td>".$id['mdp']."</td><td class='role'>".$id['Rôle']."</td><td><button type='button' class='btn btn-warning'>Modifier</button> <button type='button' class='btn btn-danger'>Supprimer</button></td></tr>";
 				}
 				
 			?>
@@ -81,8 +81,9 @@
 			$(".btn-warning").click(function() {
 				var $row = $(this).closest("tr");
 				var $text = $row.find(".log").text();
+				var $role = $row.find(".role").text();
 				
-				location.replace("traitementModComptes.php?log="+$text+"&type=mod");
+				location.replace("traitementModComptes.php?log="+$text+"&type=mod&role="+$role);
 			});
 		</script>
 		<script>

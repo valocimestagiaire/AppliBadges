@@ -14,15 +14,12 @@
 			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
 				header("Location: Connexion.php");
 			}
-		
 		?>
 		<div class="container h-auto">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
 					<legend>Création d'une identité</legend>
-				
-
-				
+								
 					<form method="POST" action="traitementIdentite.php">
 						<div class="form-group red-text">
 							<?php
@@ -57,44 +54,23 @@
 						<div class="form-group">
 							<div class="input-group input-groupe-sm">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Télécommande</span>
-									</div>
-									<input class="form-control" type="text" id="tele" name="tele">
+									<span class="input-group-text" id="basic-addon1">Alarme Verisure</span>
+								</div>
+								<select class="form-select" name="verisure" aria-label="Default select example">
+									<option selected value="Oui">Oui</option>
+									<option value="Non">Non</option>
+									
+								</select>
 							</div>
 							</br>
 							<div class="input-group input-groupe-sm">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Porte vitrée</span>
-									</div>
-									<input class="form-control" type="text" id="badgeN" name="badgeN">
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Portes palières</span>
-									</div>
-									<input class="form-control" type="text" id="badgeB" name="badgeB">
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Café</span>
-									</div>
-									<input class="form-control" type="text" id="badgeC" name="badgeC">
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Verisure</span>
-									</div>
-									<input class="form-control" type="text" id="verisure" name="verisure">
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Parking</span>
-									</div>
-									<input class="form-control" type="text" id="parking" name="parking">
+									<span class="input-group-text" id="basic-addon1">Parking</span>
+								</div>
+								<select class="form-select" name="parking" aria-label="Default select example">
+									<option selected value="Oui">Oui</option>
+									<option value="Non">Non</option>									
+								</select>
 							</div>
 							</br>
 							<div class="input-group input-groupe-sm">
@@ -136,11 +112,6 @@
 									<option value="Lundi au Dimanche">Du Lundi au Dimanche</option>
 								</select>
 							</div>
-							</br>
-						</div>
-						
-						
-						<div class="form-group">
 							</br>
 							</br>
 							<div class="button ">

@@ -8,11 +8,18 @@
 	</head>
 	<body>
 		<?php
+			
+			session_start();
+			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+				header("Location: Connexion.php");
+			}
+			
 			$servername = 'localhost';
 			$username = 'root';
 			$password = 'root';
 			$database = 'application badges';
 			$login = $_GET['log'];
+			$role = $_GET['role'];
 			
 			if($_GET['type'] == "mod"){
 				$connexion = new mysqli($servername,$username,$password,$database);
@@ -36,9 +43,6 @@
 										if(!empty($_GET['erreur'])){
 											if($_GET['erreur'] == "champs"){
 												echo "Un ou plusieurs champs sont manquants";
-											}
-											elseif($_GET['erreur'] == "logExist"){
-												echo "Cet utilisateur possède déjà un compte";
 											}
 										}
 									?>
@@ -78,8 +82,15 @@
 											<span class="input-group-text" id="basic-addon1">Rôle</span>
 										</div>
 										<select class="form-select" name="role" aria-label="Default select example">
-											<option value="Administrateur">Administrateur</option>
-											<option selected value="Utilisateur">Utilisateur</option>
+											<?php if($role == "Administrateur"){ ?>
+												<option selected value="Administrateur">Administrateur</option>
+											<?php }else{ ?>
+												<option value="Administrateur">Administrateur</option>
+											<?php }if($role == "Utilisateur"){ ?>
+												<option selected value="Utilisateur">Utilisateur</option>
+											<?php }else{ ?>
+												<option value="Utilisateur">Utilisateur</option>
+											<?php } ?>
 										</select>
 									</div>
 									<div class="input-group input-groupe-sm">
@@ -109,11 +120,11 @@
 				
 				
 		<?php
-			}
-			elseif($_GET['type'] == "supp"){
+			}elseif($_GET['type'] == "supp"){
 				$connexion = new mysqli($servername,$username,$password,$database);
 				if($connexion->connect_error){
-						die('Erreur : ' .$connexion->connect_error);					}
+						die('Erreur : ' .$connexion->connect_error);
+				}
 				
 				$querySupp = mysqli_query($connexion,"DELETE FROM utilisateurs WHERE Login='$login'");
 				header("Location: AfficherComptes.php");

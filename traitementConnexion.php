@@ -1,5 +1,9 @@
 
 <?php
+	session_start();
+	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+		header("Location: Connexion.php");
+	}
 	
 	$servername = 'localhost';
 	$username = 'root';
