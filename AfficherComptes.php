@@ -9,7 +9,13 @@
 	</head>
 	<body>
 		<?php
+		
 			session_start();
+			
+			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+				header("Location: Connexion.php");
+			}
+		
 			$servername = 'localhost';
 			$username = 'root';
 			$password = 'root';
@@ -68,9 +74,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script>
 			function deconnexion(){
-				session_destroy();
-				location.replace("Connexion.php");
-				
+				location.replace("Deconnexion.php");
 			}
 		</script>
 		<script>

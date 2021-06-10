@@ -1,6 +1,6 @@
 
 <?php
-	
+	/*ADD Protection*/
 	$servername = 'localhost';
 	$username = 'root';
 	$password = 'root';
@@ -18,27 +18,22 @@
 		$login = $_POST['login'];
 		$mdp = $_POST['mdp'];
 		$role = $_POST['role'];
+		$ancienLogin = $_POST['ancienLog'];
 		
 		$connexion = new mysqli($servername,$username,$password,$database);
 		if($connexion->connect_error){
 				die('Erreur : ' .$connexion->connect_error);
 		}
+
+		$queryUpdate = mysqli_query($connexion,"UPDATE utilisateurs SET Login='$login', mdp='$mdp', Nom='$nom', Prénom='$prenom', Rôle='$role' WHERE Login='$ancienLogin'");
 		
-		$queryUserExist = mysqli_query($connexion,"SELECT * FROM utilisateurs WHERE Login='$login'");
-		if($nb_lignes = mysqli_num_rows($queryUserExist) > 0){
-			header("Location: CreationCompte.php?erreur=logExist");
-			exit(0);
-		}
-		
-		
-		$queryInsert = mysqli_query($connexion,"INSERT INTO utilisateurs(Login,mdp,Nom,Prénom,Rôle) VALUES ('$login','$mdp','$nom','$prenom','$role')");
 		header("Location: AfficherComptes.php");
 		mysqli_close($connexion);			
 	
 	
 	}
 	else{
-		header("Location: CreationCompte.php?erreur=champs");
+		header("Location: CreationCompte.php?erreur=champs&log='$login'&type=mod");
 		exit(0);
 	}
 

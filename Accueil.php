@@ -9,7 +9,13 @@
 	</head>
 	<body>
 		<?php
+			
 			session_start();
+			
+			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+				header("Location: Connexion.php");
+			}
+			
 			$servername = 'localhost';
 			$username = 'root';
 			$password = 'root';
@@ -33,7 +39,7 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="Connexion.php" onclick="deconnexion()">Déconnexion</a>
+				<a class="nav-link" onclick="deconnexion()">Déconnexion</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="Connexion.php"><?php echo "Rôle: ".$_SESSION['role']?></a>
@@ -70,8 +76,7 @@
 		</script>
 		<script>
 			function deconnexion(){
-				session_destroy();
-				location.replace("Connexion.php");
+				location.replace("Deconnexion.php");
 				
 			}
 		</script>

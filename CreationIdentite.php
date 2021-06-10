@@ -7,6 +7,15 @@
 		<title>VALOCIME/ Application Badges - Identités</title>
 	</head>
 	<body>
+	
+		<?php
+			session_start();
+			
+			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+				header("Location: Connexion.php");
+			}
+		
+		?>
 		<div class="container h-auto">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>

@@ -7,6 +7,14 @@
 		<title>VALOCIME/ Application Badges - Création d'un compte utilisateur</title>
 	</head>
 	<body>
+		<?php
+			session_start();
+			
+			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+				header("Location: Connexion.php");
+			}
+		
+		?>
 		<div class="container h-auto">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
@@ -54,7 +62,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">Mot de passe</span>
 									</div>
-									<input class="form-control" type="text" id="mdp" name="mdp">
+									<input class="form-control" type="password" id="mdp" name="mdp">
 							</div>
 							</br>
 							<div class="input-group input-groupe-sm">
@@ -62,8 +70,8 @@
 									<span class="input-group-text" id="basic-addon1">Rôle</span>
 								</div>
 								<select class="form-select" name="role" aria-label="Default select example">
-									<option selected value="admin">Administrateur</option>
-									<option value="user">Utilisateur</option>
+									<option value="Administrateur">Administrateur</option>
+									<option selected value="Utilisateur">Utilisateur</option>
 								</select>
 							</div>
 						</div>
