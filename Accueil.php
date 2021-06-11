@@ -21,6 +21,10 @@
 			$password = 'root';
 			$database = 'application badges';
 			
+			if(!empty($_GET['erreur'])){
+				echo "<script>alert('Un ou plusieurs champ(s) est/sont manquant lors de la modification de l identité ainsi que de ses badges, Veuillez recommencer l opération.');</script>";
+			}
+			
 		?>
 		
 		<ul class="nav nav-tabs">
@@ -67,7 +71,7 @@
 				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Période,Bureau_FZ FROM identités");
 				$idChoisi = "";
 				foreach($query as $id){
-					echo"<tr class='rowTable' ><td class='invisible'>".$id['Id_Identité']."</td><td>".$id['Nom']."</td><td>".$id['Prénom']."</td><td>".$id['Alarme']."</td><td>".$id['Parking']."</td><td>".$id['Pass']."</td><td>".$id['Accès_Bureau']."</td><td>".$id['Période']."</td><td>".$id['Bureau_FZ']."</td></tr>";
+					echo"<tr class='rowTable' ><td class='invisible'>".$id['Id_Identité']."</td><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>".$id['Alarme']."</td><td>".$id['Parking']."</td><td>".$id['Pass']."</td><td>".$id['Accès_Bureau']."</td><td>".$id['Bureau_FZ']."</td><td>".$id['Période']."</td></tr>";
 				}
 				
 			?>
@@ -79,9 +83,11 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script>
 			$(".rowTable").click(function() {
-				var $text = $(this).find(".invisible").text();
+				var $id = $(this).find(".invisible").text();
+				var $nom = $(this).find(".nom").text();
+				var $prenom = $(this).find(".prenom").text();
 				
-				location.replace("Badges.php?id="+$text);
+				location.replace("Badges.php?id="+$id+"&nom="+$nom+"&prenom="+$prenom);
 			});
 		</script>
 		<script>

@@ -79,8 +79,8 @@
 							</br>
 							</br>
 							<div class="button ">
-								<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Retour"/>
-								<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Valider"/>
+								<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Retour"/>
+								<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Valider"/>
 							</div>
 						</div>
 					</form>

@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link href="css/PageConnexion.css"/ rel="stylesheet">
-		<title>VALOCIME/ Application Badges - Identités</title>
+		<title>VALOCIME/ Application Badges - Nouvelle Identité</title>
 	</head>
 	<body>
 	
@@ -57,8 +57,8 @@
 									<span class="input-group-text" id="basic-addon1">Alarme Verisure</span>
 								</div>
 								<select class="form-select" name="verisure" aria-label="Default select example">
-									<option selected value="Oui">Oui</option>
-									<option value="Non">Non</option>
+									<option selected value="OUI">Oui</option>
+									<option value="NON">Non</option>
 									
 								</select>
 							</div>
@@ -68,8 +68,8 @@
 									<span class="input-group-text" id="basic-addon1">Parking</span>
 								</div>
 								<select class="form-select" name="parking" aria-label="Default select example">
-									<option selected value="Oui">Oui</option>
-									<option value="Non">Non</option>									
+									<option selected value="OUI">Oui</option>
+									<option value="NON">Non</option>									
 								</select>
 							</div>
 							</br>
@@ -78,8 +78,8 @@
 									<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
 								</div>
 								<select class="form-select" name="FZ" aria-label="Default select example">
-									<option selected value="Non">Non</option>
-									<option value="Oui">Oui</option>
+									<option selected value="NON">Non</option>
+									<option value="OUI">Oui</option>
 								</select>
 							</div>
 							</br>
@@ -88,8 +88,8 @@
 									<span class="input-group-text" id="basic-addon1">Clé Pass</span>
 								</div>
 								<select class="form-select" name="pass" aria-label="Default select example">
-									<option selected value="Non">Non</option>
-									<option value="Oui">Oui</option>
+									<option selected value="NON">Non</option>
+									<option value="OUI">Oui</option>
 								</select>
 							</div>
 							</br>
@@ -98,8 +98,8 @@
 									<span class="input-group-text" id="basic-addon1">Clé Accès Bureau</span>
 								</div>
 								<select class="form-select" name="bureau" aria-label="Default select example">
-									<option selected value="Non">Non</option>
-									<option value="Oui">Oui</option>
+									<option selected value="NON">Non</option>
+									<option value="OUI">Oui</option>
 								</select>
 							</div>
 							</br>
@@ -108,8 +108,8 @@
 									<span class="input-group-text" id="basic-addon1">Période d'accès</span>
 								</div>
 								<select class="form-select" name="periode" aria-label="Default select example">
-									<option selected value="Lundi au Vendredi">Du Lundi au Vendredi</option>
-									<option value="Lundi au Dimanche">Du Lundi au Dimanche</option>
+									<option selected value="Du Lundi au Vendredi">Du Lundi au Vendredi</option>
+									<option value="Du Lundi au Dimanche">Du Lundi au Dimanche</option>
 								</select>
 							</div>
 							</br>

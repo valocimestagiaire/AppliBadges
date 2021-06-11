@@ -84,12 +84,10 @@
 										<select class="form-select" name="role" aria-label="Default select example">
 											<?php if($role == "Administrateur"){ ?>
 												<option selected value="Administrateur">Administrateur</option>
+												<option value="Utilisateur">Utilisateur</option>
 											<?php }else{ ?>
 												<option value="Administrateur">Administrateur</option>
-											<?php }if($role == "Utilisateur"){ ?>
 												<option selected value="Utilisateur">Utilisateur</option>
-											<?php }else{ ?>
-												<option value="Utilisateur">Utilisateur</option>
 											<?php } ?>
 										</select>
 									</div>

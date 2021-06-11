@@ -49,6 +49,17 @@ html,body{
 	background-color: #0e265d;
 }
 
+.bodyModBadge{
+	padding-top: 120px;
+	height: 600px;
+}
+
+.containerBadge{
+	height: 600px;
+	
+}
+
+
 ul{
 	background-color: #5a78a5 !important;
 	border-color: white !important;
