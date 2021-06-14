@@ -16,6 +16,17 @@
 				header("Location: Connexion.php");
 			}
 			
+			if(!empty($_GET['erreur'])){
+				if($_GET['erreur'] == "idLong12"){
+					echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (12 caractères max), Veuillez recommencer votre opération.');</script>";
+				}
+				elseif($_GET['erreur'] == "idLong10"){
+					echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (10 caractères max), Veuillez recommencer votre opération.');</script>";
+				}else{
+					echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (8 caractères max), Veuillez recommencer votre opération.');</script>";
+				}
+			}
+			
 			$servername = 'localhost';
 			$username = 'root';
 			$password = 'root';
@@ -40,6 +51,15 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="CreationIdentite.php">Nouvelle identité</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Badges</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="AfficherBadges.php?type=PERDU">Afficher les badges perdus</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="AfficherBadges.php?type=PRET">Afficher les badges prêtés</a>
+					
+				</div>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des comptes</a>
@@ -67,7 +87,7 @@
 			<div class="row justify-content-center">
 				<div class="col">
 					<table class="table table-striped table-dark table-hover table-bordered d-flex justify-content-center">
-						<tr class="blue-row">
+						<tr>
 							<th>Nom</th>
 							<th>Prénom</th>
 							<th>Alarme Verisure</th>
@@ -168,7 +188,8 @@
 						<input class="form-control" type="hidden" id="nomB" name="nomB" value=<?php echo $_GET['nom']?>>
 						<input class="form-control" type="hidden" id="prenomb" name="prenomB" value=<?php echo $_GET['prenom']?>>
 						<div class="button ">
-							<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Supprimer"/>
+							<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Tout Supprimer"/>
+							<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Supprimer un ou plusieurs Badges"/>
 							<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Modifier"/>
 							<input type="submit" class="btn btn-primary justify-content-center" name="valider" value="Ajouter un badge"/>
 

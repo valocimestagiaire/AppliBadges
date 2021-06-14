@@ -11,9 +11,7 @@
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
 					<legend>Connexion</legend>
-				
-
-				
+					</br></br>
 					<form method="POST" action="traitementConnexion.php">
 						<div class="form-group">
 							<div class="input-group input-groupe-sm">

@@ -25,6 +25,11 @@
 		$role = $_POST['role'];
 		$ancienLogin = $_POST['ancienLog'];
 		
+		if(strlen($nom)>20 OR strlen($prenom)>20){
+			header("Location: AfficherComptes.php?erreur=NPlong");
+			exit(0);
+		}
+		
 		$connexion = new mysqli($servername,$username,$password,$database);
 		if($connexion->connect_error){
 				die('Erreur : ' .$connexion->connect_error);

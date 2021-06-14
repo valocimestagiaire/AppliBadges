@@ -30,10 +30,11 @@
 				$queryModif = mysqli_query($connexion,"SELECT * FROM utilisateurs WHERE Login='$login'");
 				$user_modification = mysqli_fetch_array($queryModif);?>				
 				
+				<h1>Modification du compte</h1>
 				<div class="container h-auto">
 					<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 						<fieldset>
-							<legend>Modification d'un compte</legend>
+							<legend>Nouvelles informations</legend>
 						
 
 						
@@ -106,15 +107,6 @@
 						</fieldset>
 					</div>
 				</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				
 		<?php

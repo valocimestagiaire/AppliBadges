@@ -16,9 +16,10 @@
 			}
 		?>
 		<div class="container h-auto">
+			<h1>Création d'une nouvelle identité</h1>
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
-					<legend>Création d'une identité</legend>
+					<legend>Nouvelle identité</legend>
 								
 					<form method="POST" action="traitementIdentite.php">
 						<div class="form-group red-text">
@@ -26,6 +27,9 @@
 								if(!empty($_GET['erreur'])){
 									if($_GET['erreur'] == "champs"){
 										echo "Un ou plusieurs champs sont manquants";
+									}
+									elseif($_GET['erreur'] == "NPlong"){
+										echo "Le nom ou prénom entré est trop long";
 									}
 									elseif($_GET['erreur'] == "idExiste"){
 										echo "Cette personne existe déja";

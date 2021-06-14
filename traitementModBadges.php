@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 		<link href="css/PageConnexion.css"/ rel="stylesheet">
-		<title>VALOCIME/ Application Badges - Modification d'une Identité</title>
+		<title>VALOCIME/ Application Badges - Modification d'une Identité et ses badges</title>
 	</head>
 	
 	
@@ -20,6 +20,7 @@
 			$password = 'root';
 			$database = 'application badges';
 			
+
 			
 			$connexion = new mysqli($servername,$username,$password,$database);
 			if($connexion->connect_error){
@@ -28,22 +29,151 @@
 			
 			$id = $_POST['id'];
 			
-			if($_POST['valider']=="Supprimer"){
-				$querySuppressionId = mysqli_query($connexion,"DELETE FROM identités WHERE Id_Identité='$id'");
+
+			if($_POST['valider']=="Tout Supprimer"){
 				$querySuppTele = mysqli_query($connexion,"DELETE FROM télécommande WHERE Id_Identité='$id'");
 				$querySuppNoir = mysqli_query($connexion,"DELETE FROM badge_noir WHERE Id_Identité='$id'");
 				$querySuppBleu = mysqli_query($connexion,"DELETE FROM badge_bleu WHERE Id_Identité='$id'");
 				$querySuppCafe = mysqli_query($connexion,"DELETE FROM café WHERE Id_Identité='$id'");
+				$querySuppressionId = mysqli_query($connexion,"DELETE FROM identités WHERE Id_Identité='$id'");
 				header("Location: Accueil.php");
 				exit(0);
 			}
+			elseif($_POST['valider'] == "Supprimer un ou plusieurs Badges"){?>
+				<body>
+					<h1>Suppression(s) de badge(s)</h1>
+					<div class="container h-auto">
+					<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
+							<fieldset>
+								<legend>Supprimer un ou plusieurs badge(s)</legend>
+								</br>
+								</br>
+								<form method="POST" action="traitementSuppBadge.php">
+									<div class="form-group">
+									<?php
+
+										
+										$queryBadges = mysqli_query($connexion,"SELECT * FROM télécommande WHERE Id_Identité='$id'");
+										foreach($queryBadges as $badges){
+											$id_B = $badges['Id_Télécommande'];
+											echo "
+												<div class='row'>
+													<div class='input-group input-groupe-sm'>
+														<div class='input-group-prepend col-md'>
+															<div class='input-group-text'>
+																<input class='checkbox' type='checkbox' name='Télécommande[]' value='$id_B' aria-label='Checkbox for following text input'>
+																<label for='Télécommande'>$id_B</label>
+															</div>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>Télécommande</span>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>".$badges['Status']."</span>
+														</div>
+
+													</div>
+												</div>
+												</br>";
+										}
+										
+										$queryBadges = mysqli_query($connexion,"SELECT * FROM badge_noir WHERE Id_Identité='$id'");
+										foreach($queryBadges as $badges){
+											$id_B = $badges['Id_Badge_Noir'];
+											echo "
+												<div class='row'>
+													<div class='input-group input-groupe-sm'>
+														<div class='input-group-prepend' col-md>
+															<div class='input-group-text'>
+																<input class='checkbox' type='checkbox' name='badge_noir[]' value='$id_B' aria-label='Checkbox for following text input'>
+																<label for='badge_noir'>$id_B</label>
+															</div>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>Badge Noir</span>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>".$badges['Status']."</span>
+														</div>
+
+													</div>
+												</div>
+												</br>";
+										}
+
+										$queryBadges = mysqli_query($connexion,"SELECT * FROM badge_bleu WHERE Id_Identité='$id'");
+										foreach($queryBadges as $badges){
+											$id_B = $badges['Id_Badge_Bleu'];
+											echo "
+												<div class='row'>
+													<div class='input-group input-groupe-sm'>
+														<div class='input-group-prepend col-md'>
+															<div class='input-group-text'>
+																<input class='checkbox' type='checkbox' name='badge_bleu[]' value='$id_B' aria-label='Checkbox for following text input'>
+																<label for='badge_bleu'>$id_B</label>
+															</div>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>Badge Bleu</span>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>".$badges['Status']."</span>
+														</div>
+
+													</div>
+												</div>
+												</br>";
+										}
+
+										$queryBadges = mysqli_query($connexion,"SELECT * FROM café WHERE Id_Identité='$id'");
+										foreach($queryBadges as $badges){
+											$id_B = $badges['Id_Café'];
+											echo "
+												<div class='row'>
+													<div class='input-group input-groupe-sm'>
+														<div class='input-group-prepend col-md'>
+															<div class='input-group-text'>
+																<input class='checkbox' type='checkbox' name='cafe[]' value='$id_B' aria-label='Checkbox for following text input'>
+																<label for='cafe'>$id_B</label>
+															</div>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>Café</span>
+														</div>
+														<div class='input-group-append col-md'>
+															<span class='input-group-text'>".$badges['Status']."</span>
+														</div>
+
+													</div>
+												</div>
+												</br>";
+										}
+									?>
+										</br>
+										<div class="row">
+											<div class="button">
+												<input class="form-control" type="hidden" id="id" name="id" value=<?php echo $id?>>
+												<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Retour"/>
+												<input type="submit" class="btn btn-primary justify-content-cente" name="valider" value="Valider"/>
+											</div>
+										</div>
+									</div>
+								</form>
+							</fieldset>
+						</div>
+					</div>
+				</body>
 			
-			if($_POST['valider']=="Ajouter un badge"){?>
+			<?php
+			}
+			elseif($_POST['valider']=="Ajouter un badge"){?>
 			<body>
+				<h1>Création d'un nouveau badge</h1>
 				<div class="container h-auto">
 					<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 							<fieldset>
 								<legend>Ajouter un badge</legend>
+								</br>
 								</br>
 								<form method="POST" action="traitementAjoutBadge.php">
 									<div class="form-group">
@@ -71,6 +201,20 @@
 										</div>
 										</br>
 										<div class="row">
+											<div class="input-group input-groupe-sm">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="basic-addon1">Status du badge</span>
+												</div>
+												<select class="form-select" name="status_badge" aria-label="Default select example">
+													<option selected value="ACTIF">ACTIF</option>
+													<option value="PERDU">PERDU</option>
+													<option value="PRET">PRET</option>
+												</select>
+											</div>
+										</div>
+										</br>
+										</br>
+										<div class="row">
 											<div class="button">
 												<input class="form-control" type="hidden" id="id" name="id" value=<?php echo $id?>>
 												<input class="form-control" type="hidden" id="nomB" name="nomB" value=<?php echo $_POST['nomB']?>>
@@ -91,23 +235,15 @@
 			
 				$queryRecupIdentite =  mysqli_query($connexion,"SELECT * FROM identités WHERE Id_Identité='$id'");
 				$user_choisi = mysqli_fetch_array($queryRecupIdentite);
-
-				$queryRecupStatusTele = mysqli_query($connexion,"SELECT * FROM télécommande WHERE Id_Identité='$id'");
-				$statusTele = mysqli_fetch_array($queryRecupStatusTele);
-				$queryRecupStatusNoir = mysqli_query($connexion,"SELECT Status FROM badge_noir WHERE Id_Identité='$id'");
-				$statusNoir = mysqli_fetch_array($queryRecupStatusNoir);
-				$queryRecupStatusBleu = mysqli_query($connexion,"SELECT Status FROM badge_bleu WHERE Id_Identité='$id'");
-				$statusBleu = mysqli_fetch_array($queryRecupStatusBleu);
-				$queryRecupStatusCafe = mysqli_query($connexion,"SELECT Status FROM café WHERE Id_Identité='$id'");
-				$statusCafe = mysqli_fetch_array($queryRecupStatusCafe);
 			
 
 		?>
+	
 	<body class="bodyModBadge">
 		<div class="containerBadge">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
-					<legend>Modification de l'identité</legend>
+					<legend>L'identité</legend>
 								
 					<form method="POST" action="traitementModificationBadgeId.php">
 						<div class="form-group red-text">
@@ -137,143 +273,164 @@
 						</br></br>
 						<legend>Télécommande</legend>
 						<div class="form-group">
-							<div class="input-group input-groupe-sm">
-								<select class="form-select" name="teleChoix" aria-label="Default select example">
-								<?php
-									$queryRecupStatusTele = mysqli_query($connexion,"SELECT * FROM télécommande WHERE Id_Identité='$id'");
-									$statusTele = mysqli_fetch_array($queryRecupStatusTele);
-									foreach($queryRecupStatusTele as $badge){
-										echo "<option value=".$badge['Id_Télécommande'].">".$badge['Id_Télécommande']."</option>";
-									}
-								?>
-								</select>
+							<?php 
+								$queryRecupStatusTele = mysqli_query($connexion,'SELECT * FROM télécommande WHERE Id_Identité='.$id);
+								foreach($queryRecupStatusTele as $badge){
+								
+								echo "
+								<div class='input-group input-groupe-sm'>
+									<input class='form-control' type='text' id='id_tele' name='id_tele[]' value=".$badge['Id_Télécommande']." readonly='readonly'/>
 							
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Status</span>
+									<div class='input-group-prepend'>
+										<span class='input-group-text' id='basic-addon1'>Status</span>
+									</div>
+									<select class='form-select' name='tele[]' aria-label='Default select example'>";
+									if($badge['Status'] == 'ACTIF'){
+										echo"
+										<option selected value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}elseif($badge['Status'] == 'PERDU'){
+										echo"
+										<option value='ACTIF'>ACTIF</option>
+										<option selected value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}else{
+										echo "
+										<option value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option selected value='PRET'>PRET</option>";
+									}
+									echo"
+										</select>
+									
 								</div>
-								<select class="form-select" name="tele" aria-label="Default select example">
-									<?php if($statusTele['Status'] == "ACTIF"){ ?>
-										<option selected value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }elseif($statusTele['Status'] == "PERDU"){ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option selected value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }else{ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option selected value="PRET">PRET</option>
-									<?php } ?>
-								</select>
-							</div>
+								</br>";
+								}
+								
+							?>
 							
 							
 						</div>
 						</br>
 						<legend>Badge Noir</legend>
 						<div class="form-group">
-							<div class="input-group input-groupe-sm">
-								<select class="form-select" name="noirChoix" aria-label="Default select example">
-								<?php
-									$queryRecupStatusNoir = mysqli_query($connexion,"SELECT * FROM badge_noir WHERE Id_Identité='$id'");
-									$statusNoir = mysqli_fetch_array($queryRecupStatusNoir);
-									foreach($queryRecupStatusNoir as $badge){
-										echo "<option value=".$badge['Id_Badge_Noir'].">".$badge['Id_Badge_Noir']."</option>";
-									}
-								?>
-								</select>
+						
+							<?php 
+								$queryRecupStatusNoir = mysqli_query($connexion,'SELECT * FROM badge_noir WHERE Id_Identité='.$id);
+
+								foreach($queryRecupStatusNoir as $badge){	
+								echo "
+								<div class='input-group input-groupe-sm'>
+									<input class='form-control' type='text' id='id_badgeN' name='id_badgeN[]' value=".$badge['Id_Badge_Noir']." readonly='readonly'/>
 							
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Status</span>
+									<div class='input-group-prepend'>
+										<span class='input-group-text' id='basic-addon1'>Status</span>
+									</div>
+									<select class='form-select' name='badgeN[]' aria-label='Default select example'>";
+									if($badge['Status'] == 'ACTIF'){
+										echo"
+										<option selected value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}elseif($badge['Status'] == 'PERDU'){
+										echo"
+										<option value='ACTIF'>ACTIF</option>
+										<option selected value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}else{
+										echo "
+										<option value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option selected value='PRET'>PRET</option>";
+									}
+									echo"
+										</select>
+									
 								</div>
-								<select class="form-select" name="badgeN" aria-label="Default select example">
-									<?php if($statusNoir['Status'] == "ACTIF"){ ?>
-										<option selected value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }elseif($statusNoir['Status'] == "PERDU"){ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option selected value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }else{ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option selected value="PRET">PRET</option>
-									<?php } ?>
-								</select>
-							</div>
+								</br>";
+								}
+							?>
 						</div>
 						</br>
 						<div class="form-group">
 							<legend>Badge Bleu</legend>
 							
-							<div class="input-group input-groupe-sm">
-								<select class="form-select" name="bleuChoix" aria-label="Default select example">
-								<?php
-									$queryRecupStatusBleu = mysqli_query($connexion,"SELECT * FROM badge_bleu WHERE Id_Identité='$id'");
-									$statusBleu = mysqli_fetch_array($queryRecupStatusBleu);
-									foreach($queryRecupStatusBleu as $badge){
-										echo "<option value=".$badge['Id_Badge_Bleu'].">".$badge['Id_Badge_Bleu']."</option>";
-									}
-								?>
-								</select>
+							<?php 
+								$queryRecupStatusBleu = mysqli_query($connexion,"SELECT * FROM badge_bleu WHERE Id_Identité=".$id);
+
+								foreach($queryRecupStatusBleu as $badge){	
+								echo "
+								<div class='input-group input-groupe-sm'>
+									<input class='form-control' type='text' id='id_badgeB' name='id_badgeB[]' value=".$badge['Id_Badge_Bleu']." readonly='readonly'/>
 							
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Status</span>
+									<div class='input-group-prepend'>
+										<span class='input-group-text' id='basic-addon1'>Status</span>
+									</div>
+									<select class='form-select' name='badgeB[]' aria-label='Default select example'>";
+									if($badge['Status'] == 'ACTIF'){
+										echo"
+										<option selected value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}elseif($badge['Status'] == 'PERDU'){
+										echo"
+										<option value='ACTIF'>ACTIF</option>
+										<option selected value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}else{
+										echo "
+										<option value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option selected value='PRET'>PRET</option>";
+									}
+									echo"
+										</select>
+									
 								</div>
-								<select class="form-select" name="badgeB" aria-label="Default select example">
-									<?php if($statusBleu['Status'] == "ACTIF"){ ?>
-										<option selected value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }elseif($statusBleu['Status'] == "PERDU"){ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option selected value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }else{ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option selected value="PRET">PRET</option>
-									<?php } ?>
-								</select>
-							</div>
+								</br>";
+								}
+							?>
 						</div>
 						</br>
 						<div class="form-group">
 							<legend>Badge Café</legend>
 							
-							<div class="input-group input-groupe-sm">
-								<select class="form-select" name="cafeChoix" aria-label="Default select example">
-								<?php
-									$queryRecupStatusCafe = mysqli_query($connexion,"SELECT * FROM café WHERE Id_Identité='$id'");
-									$statusCafe = mysqli_fetch_array($queryRecupStatusCafe);
-									foreach($queryRecupStatusCafe as $badge){
-										echo "<option value=".$badge['Id_Café'].">".$badge['Id_Café']."</option>";
+							<?php 
+								$queryRecupStatusCafe = mysqli_query($connexion,"SELECT * FROM café WHERE Id_Identité=".$id);
+
+								foreach($queryRecupStatusCafe as $badge){	
+								echo "
+								<div class='input-group input-groupe-sm'>
+									<input class='form-control' type='text' id='id_cafe' name='id_cafe[]' value=".$badge['Id_Café']." readonly='readonly'/>
+									<div class='input-group-prepend'>
+										<span class='input-group-text' id='basic-addon1'>Status</span>
+									</div>
+									<select class='form-select' name='cafe[]' aria-label='Default select example'>";
+									if($badge['Status'] == 'ACTIF'){
+										echo"
+										<option selected value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}elseif($badge['Status'] == 'PERDU'){
+										echo"
+										<option value='ACTIF'>ACTIF</option>
+										<option selected value='PERDU'>PERDU</option>
+										<option value='PRET'>PRET</option>";
+									}else{
+										echo "
+										<option value='ACTIF'>ACTIF</option>
+										<option value='PERDU'>PERDU</option>
+										<option selected value='PRET'>PRET</option>";
 									}
-								?>
-								</select>
-							
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Status</span>
+									echo"
+										</select>
+									
 								</div>
-								<select class="form-select" name="badgeC" aria-label="Default select example">
-									<?php if($statusCafe['Status'] == "ACTIF"){ ?>
-										<option selected value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }elseif($statusCafe['Status'] == "PERDU"){ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option selected value="PERDU">PERDU</option>
-										<option value="PRET">PRET</option>
-									<?php }else{ ?>
-										<option value="ACTIF">ACTIF</option>
-										<option value="PERDU">PERDU</option>
-										<option selected value="PRET">PRET</option>
-									<?php } ?>
-								</select>
-							</div>
-						</div>
+								</br>";
+								}
+							?>
+							
 						</br></br>
 						<legend>Autres Badges</legend>
 						<div class="form-group">

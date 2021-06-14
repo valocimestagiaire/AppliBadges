@@ -15,10 +15,11 @@
 			}
 		
 		?>
+		<h1>Création d'un compte</h1>
 		<div class="container h-auto">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
-					<legend>Création d'un compte</legend>
+					<legend>Nouveau compte</legend>
 				
 
 				
@@ -28,6 +29,9 @@
 								if(!empty($_GET['erreur'])){
 									if($_GET['erreur'] == "champs"){
 										echo "Un ou plusieurs champs sont manquants";
+									}
+									elseif($_GET['erreur'] == "NPlong"){
+										echo "Le nom ou prénom entré est trop long";
 									}
 									elseif($_GET['erreur'] == "logExist"){
 										echo "Cet utilisateur possède déjà un compte";

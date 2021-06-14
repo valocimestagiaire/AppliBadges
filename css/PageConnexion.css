@@ -50,12 +50,12 @@ html,body{
 }
 
 .bodyModBadge{
-	padding-top: 120px;
-	height: 600px;
+	padding-top: 300px ;
+	height: 800px ;
 }
 
 .containerBadge{
-	height: 600px;
+	height: 800px;
 	
 }
 
@@ -90,5 +90,16 @@ div.dropdown-menu.show{
 
 a.dropdown-item:hover{
 	background-color: #c3ac66;
+	
+}
+
+h1,h6{
+	margin-top: 15px;
+	color: #c3ac66 !important;
+	text-align: center;
+}
+
+.checkbox{
+	margin-right: 10px;
 	
 }

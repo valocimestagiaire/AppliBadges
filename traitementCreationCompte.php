@@ -17,12 +17,17 @@
 	}
 	
 	if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['login']) && !empty($_POST['mdp'])){
-		
+				
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom'];
 		$login = $_POST['login'];
 		$mdp = $_POST['mdp'];
 		$role = $_POST['role'];
+		
+		if(strlen($nom)>20 OR strlen($prenom)>20){
+			header("Location: CreationCompte.php?erreur=NPlong");
+			exit(0);
+		}
 		
 		$connexion = new mysqli($servername,$username,$password,$database);
 		if($connexion->connect_error){
