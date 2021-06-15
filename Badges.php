@@ -16,7 +16,6 @@
 			
 			$connexion = connexion();		
 			$queryRecupIdentite =  mysqli_query($connexion,"SELECT * FROM identités WHERE Id_Identité='$idChoisi'");
-			
 			$user_choisi = mysqli_fetch_array($queryRecupIdentite);
 			
 		?>

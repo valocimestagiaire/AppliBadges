@@ -28,7 +28,7 @@
 			<?php
 				$connexion = connexion();
 				
-				$query = mysqli_query($connexion,"SELECT Nom,Prénom,Login,mdp,Rôle FROM utilisateurs");
+				$query = mysqli_query($connexion,"SELECT Nom,Prénom,Login,mdp,Rôle FROM utilisateurs ORDER BY Nom");
 				foreach($query as $id){
 					echo"<tr><td>".$id['Nom']."</td><td>".$id['Prénom']."</td><td class='log'>".$id['Login']."</td><td type='password'>".$id['mdp']."</td><td class='role'>".$id['Rôle']."</td><td><button type='button' class='btn btn-warning'>Modifier</button> <button type='button' class='btn btn-danger'>Supprimer</button></td></tr>";
 				}

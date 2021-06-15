@@ -20,7 +20,7 @@
 		
 		<table class="table table-striped table-dark table-hover table-bordered d-flex justify-content-center">
 			<tr>
-				<th class="invisible">id</th>
+				<th class='colonneCachee'>id</th>
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Alarme Verisure</th>
@@ -33,10 +33,10 @@
 			<?php
 				$connexion = connexion();
 				
-				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Période,Bureau_FZ FROM identités");
+				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Période,Bureau_FZ FROM identités ORDER BY Nom");
 				$idChoisi = "";
 				foreach($query as $id){
-					echo"<tr class='rowTable' ><td class='invisible'>".$id['Id_Identité']."</td><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>".$id['Alarme']."</td><td>".$id['Parking']."</td><td>".$id['Pass']."</td><td>".$id['Accès_Bureau']."</td><td>".$id['Bureau_FZ']."</td><td>".$id['Période']."</td></tr>";
+					echo"<tr class='rowTable' ><td class='colonneCachee'>".$id['Id_Identité']."</td><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>".$id['Alarme']."</td><td>".$id['Parking']."</td><td>".$id['Pass']."</td><td>".$id['Accès_Bureau']."</td><td>".$id['Bureau_FZ']."</td><td>".$id['Période']."</td></tr>";
 				}
 				
 				mysqli_close($connexion);

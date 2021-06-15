@@ -213,7 +213,7 @@
 			$user_choisi = mysqli_fetch_array($queryRecupIdentite);
 		
 	?>
-
+	<h1 class='mod'>Modifications</h1>
 	<body class="bodyModBadge">
 		<div class="containerBadge">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">

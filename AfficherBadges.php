@@ -29,7 +29,7 @@
 				$connexion = connexion();
 				$status = $_GET['type'];
 				
-				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom FROM identités");
+				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom FROM identités ORDER BY Nom");
 				foreach($query as $id){
 					$queryBadgeTele = mysqli_query($connexion,"SELECT * FROM télécommande WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
 					foreach($queryBadgeTele as $tele){

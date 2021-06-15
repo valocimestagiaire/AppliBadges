@@ -50,7 +50,7 @@ html,body{
 }
 
 .bodyModBadge{
-	padding-top: 300px ;
+	padding-top: 350px ;
 	height: 800px ;
 }
 
@@ -99,7 +99,19 @@ h1,h6{
 	text-align: center;
 }
 
+.mod{
+	position: absolute;
+	top: 0px;
+	margin: auto;
+	margin-left: 50vw;
+	transform: translateX(-50%);
+}
+
 .checkbox{
 	margin-right: 10px;
 	
+}
+
+.colonneCachee{
+	display: none;
 }

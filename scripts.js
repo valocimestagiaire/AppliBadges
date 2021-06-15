@@ -3,7 +3,7 @@ function deconnexion(){
 }
 
 $(".rowTable").click(function() {
-	var $id = $(this).find(".invisible").text();
+	var $id = $(this).find(".colonneCachee").text();
 	var $nom = $(this).find(".nom").text();
 	var $prenom = $(this).find(".prenom").text();		
 	location.replace("Badges.php?id="+$id+"&nom="+$nom+"&prenom="+$prenom);
