@@ -15,7 +15,7 @@
 			$idChoisi = $_GET['id'];
 			
 			$connexion = connexion();		
-			$queryRecupIdentite =  mysqli_query($connexion,"SELECT * FROM identités WHERE Id_Identité='$idChoisi'");
+			$queryRecupIdentite =  mysqli_query($connexion,"SELECT * FROM identites WHERE Id_Identité='$idChoisi'");
 			$user_choisi = mysqli_fetch_array($queryRecupIdentite);
 			
 		?>
@@ -54,7 +54,7 @@
 						</tr>
 						<?php
 
-							$queryTele = mysqli_query($connexion,"SELECT Id_Télécommande,Status FROM télécommande WHERE Id_Identité=".$idChoisi);
+							$queryTele = mysqli_query($connexion,"SELECT Id_Télécommande,Status FROM telecommande WHERE Id_Identité=".$idChoisi);
 							foreach($queryTele as $id){
 								echo"<tr><td>".$id['Id_Télécommande']."</td><td>".$id['Status']."</td></tr>";
 							}
@@ -69,10 +69,6 @@
 							<th>Status</th>
 						</tr>
 						<?php
-							$connexion = new mysqli($servername,$username,$password,$database);
-							if($connexion->connect_error){
-								die('Erreur : ' .$connexion->connect_error);
-							}
 							
 							$queryTele = mysqli_query($connexion,"SELECT Id_Badge_Noir,Status FROM badge_noir WHERE Id_Identité=".$idChoisi);
 							foreach($queryTele as $id){
@@ -90,10 +86,6 @@
 							<th>Status</th>
 						</tr>
 						<?php
-							$connexion = new mysqli($servername,$username,$password,$database);
-							if($connexion->connect_error){
-								die('Erreur : ' .$connexion->connect_error);
-							}
 							
 							$queryTele = mysqli_query($connexion,"SELECT Id_Badge_Bleu,Status FROM badge_bleu WHERE Id_Identité=".$idChoisi);
 							foreach($queryTele as $id){
@@ -109,12 +101,8 @@
 							<th>Status</th>
 						</tr>
 						<?php
-							$connexion = new mysqli($servername,$username,$password,$database);
-							if($connexion->connect_error){
-								die('Erreur : ' .$connexion->connect_error);
-							}
 							
-							$queryTele = mysqli_query($connexion,"SELECT Id_Café,Status FROM café WHERE Id_Identité=".$idChoisi);
+							$queryTele = mysqli_query($connexion,"SELECT Id_Café,Status FROM cafe WHERE Id_Identité=".$idChoisi);
 							foreach($queryTele as $id){
 								echo"<tr><td>".$id['Id_Café']."</td><td>".$id['Status']."</td></tr>";
 							}

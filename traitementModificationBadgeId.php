@@ -29,10 +29,10 @@
 		
 		$connexion = connexion();
 
-		$queryUpdateIdentite = mysqli_query($connexion,"UPDATE identités SET Nom='$nom',Prénom='$prenom',Alarme='$verisure',Parking='$parking',Pass='$pass',Accès_Bureau='$bureau',Bureau_FZ='$FZ',Période='$periode' WHERE Id_Identité='$id'");
+		$queryUpdateIdentite = mysqli_query($connexion,"UPDATE identites SET Nom='$nom',Prénom='$prenom',Alarme='$verisure',Parking='$parking',Pass='$pass',Accès_Bureau='$bureau',Bureau_FZ='$FZ',Période='$periode' WHERE Id_Identité='$id'");
 		
 		foreach(array_combine($_POST['id_tele'],$_POST['tele']) as $idTele => $tele){
-			$queryUpdateTele = mysqli_query($connexion,"UPDATE télécommande SET Status='$tele' WHERE Id_Identité='$id' and Id_Télécommande='$idTele'");
+			$queryUpdateTele = mysqli_query($connexion,"UPDATE telecommande SET Status='$tele' WHERE Id_Identité='$id' and Id_Télécommande='$idTele'");
 		}
 		
 		foreach(array_combine($_POST['id_badgeN'],$_POST['badgeN']) as $idNoir => $badgeN){
@@ -44,7 +44,7 @@
 		}
 		
 		foreach(array_combine($_POST['id_cafe'],$_POST['cafe']) as $idCafe => $badgeC){
-			$queryUpdateCafe = mysqli_query($connexion,"UPDATE café SET Status='$badgeC' WHERE Id_Identité='$id' and Id_Café='$idCafe'");
+			$queryUpdateCafe = mysqli_query($connexion,"UPDATE cafe SET Status='$badgeC' WHERE Id_Identité='$id' and Id_Café='$idCafe'");
 		}
 		
 		

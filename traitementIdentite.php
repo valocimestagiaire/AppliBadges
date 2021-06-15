@@ -27,7 +27,7 @@
 		
 		$connexion = connexion();
 		
-		$queryIdExiste =  mysqli_query($connexion,"SELECT * FROM identités WHERE Nom='$nom' and Prénom='$prenom'");
+		$queryIdExiste =  mysqli_query($connexion,"SELECT * FROM identites WHERE Nom='$nom' and Prénom='$prenom'");
 		
 		if(mysqli_num_rows($queryIdExiste) > 0){
 			header("Location: CreationIdentite.php?erreur=idExiste");
@@ -36,7 +36,7 @@
 		}
 		
 		
-		$queryIdentite = mysqli_query($connexion,"INSERT INTO identités (Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Bureau_FZ,Période) VALUES ('$nom','$prenom','$verisure','$parking','$pass','$bureau','$fz','$periode')");
+		$queryIdentite = mysqli_query($connexion,"INSERT INTO identites (Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Bureau_FZ,Période) VALUES ('$nom','$prenom','$verisure','$parking','$pass','$bureau','$fz','$periode')");
 		
 		header("Location: Accueil.php");
 		mysqli_close($connexion);			

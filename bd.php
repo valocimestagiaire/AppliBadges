@@ -3,7 +3,7 @@
 $servername = 'localhost';
 $username = 'root';
 $password = 'root';
-$database = 'application badges';
+$database = 'application_badges';
 
 function connexion(){
 	$connexion = new mysqli($GLOBALS['servername'],$GLOBALS['username'],$GLOBALS['password'],$GLOBALS['database']);

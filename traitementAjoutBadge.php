@@ -17,7 +17,7 @@
 		exit(0);
 	}
 
-	if($badge == "télécommande"){
+	if($badge == "telecommande"){
 		if(strlen($idBadge) > 12){
 			header("Location: Badges.php?id=$id&nom=$nom&prenom=$prenom&erreur=idLong12");
 			exit(0);

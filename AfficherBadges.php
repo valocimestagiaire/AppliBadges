@@ -23,15 +23,15 @@
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Type de badge</th>
-				<th>Id du Badge</th>";				
+				<th>Id du Badge</th>			
 			</tr>
 			<?php
 				$connexion = connexion();
 				$status = $_GET['type'];
 				
-				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom FROM identités ORDER BY Nom");
+				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom FROM identites ORDER BY Nom");
 				foreach($query as $id){
-					$queryBadgeTele = mysqli_query($connexion,"SELECT * FROM télécommande WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeTele = mysqli_query($connexion,"SELECT * FROM telecommande WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
 					foreach($queryBadgeTele as $tele){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Télécommande</td><td>".$tele['Id_Télécommande']."</td></tr>";
 					}
@@ -43,7 +43,7 @@
 					foreach($queryBadgeBleu as $badgeB){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Badge Bleu</td><td>".$badgeB['Id_Badge_Bleu']."</td></tr>";
 					}
-					$queryBadgeCafe = mysqli_query($connexion,"SELECT * FROM café WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeCafe = mysqli_query($connexion,"SELECT * FROM cafe WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
 					foreach($queryBadgeCafe as $cafe){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Café</td><td>".$cafe['Id_Café']."</td></tr>";
 					}

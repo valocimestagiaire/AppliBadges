@@ -8,7 +8,7 @@
 		<?php
 			include 'fonctions.php';
 		?>
-		<div class="container h-auto">
+		<div class="conteneur">
 			<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 				<fieldset>
 					<legend>Connexion</legend>
@@ -41,7 +41,7 @@
 							</br>
 							</br>
 							<div class="button ">
-								<input type="submit" class="btn btn-primary justify-content-cente" name="connexion" value="Connexion"/>
+								<input type="submit" class="btn btn-primary justify-content-center" name="connexion" value="Connexion"/>
 							</div>
 						</div>
 					</form>

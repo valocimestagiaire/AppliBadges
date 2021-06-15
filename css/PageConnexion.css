@@ -21,8 +21,10 @@
 	width: 600px;
 	text-align: center;
 	margin: auto;
-	margin-top: 50vh;
+	margin-top: 10vh;
 	transform: translateY(-50%);
+	margin-left: 50vw;
+	transform: translateX(-50%);
 	
 
 }
@@ -49,17 +51,6 @@ html,body{
 	background-color: #0e265d;
 }
 
-.bodyModBadge{
-	padding-top: 350px ;
-	height: 800px ;
-}
-
-.containerBadge{
-	height: 800px;
-	
-}
-
-
 ul{
 	background-color: #5a78a5 !important;
 	border-color: white !important;
@@ -76,6 +67,12 @@ li{
 .nav-tabs .nav-link.active {
 	background-color: #c3ac66;
 }
+
+.nav-item{
+	margin: 0px;
+	padding: 0px;
+}
+
 .dropdown-menu {
 	background-color: #54658c !important;
 }
@@ -114,4 +111,11 @@ h1,h6{
 
 .colonneCachee{
 	display: none;
+}
+
+.search{
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 400px;
 }
