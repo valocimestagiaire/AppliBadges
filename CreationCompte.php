@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-		<link href="css/PageConnexion.css"/ rel="stylesheet">
+		<?php include 'head.php'; ?>
 		<title>VALOCIME/ Application Badges - Création d'un compte utilisateur</title>
 	</head>
 	<body>
 		<?php
-			session_start();
-			
-			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-				header("Location: Connexion.php");
-			}
+			include 'fonctions.php';
+			sessionExiste();
 		
 		?>
 		<h1>Création d'un compte</h1>
@@ -26,17 +21,7 @@
 					<form method="POST" action="traitementCreationCompte.php">
 						<div class="form-group red-text">
 							<?php
-								if(!empty($_GET['erreur'])){
-									if($_GET['erreur'] == "champs"){
-										echo "Un ou plusieurs champs sont manquants";
-									}
-									elseif($_GET['erreur'] == "NPlong"){
-										echo "Le nom ou prénom entré est trop long";
-									}
-									elseif($_GET['erreur'] == "logExist"){
-										echo "Cet utilisateur possède déjà un compte";
-									}
-								}
+								erreurCreationCompte();
 							?>
 						</div>		
 						<div class="form-group">

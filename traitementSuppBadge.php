@@ -1,22 +1,13 @@
 
 <?php
 	
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
-	
-	$servername = 'localhost';
-	$username = 'root';
-	$password = 'root';
-	$database = 'application badges';
-	
+	include 'fonctions.php';
+	sessionExiste();
+	include 'bd.php';
+
 	$id = $_POST['id'];
 
-	$connexion = new mysqli($servername,$username,$password,$database);
-		if($connexion->connect_error){
-				die('Erreur : ' .$connexion->connect_error);
-		}
+	$connexion = connexion();
 
 	foreach($_POST['Télécommande'] as $tele){
 		$query = mysqli_query($connexion,"DELETE FROM Télécommande WHERE Id_Identité = '$id' AND Id_Télécommande = '$tele'");

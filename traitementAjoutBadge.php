@@ -1,16 +1,10 @@
 
 <?php
 	
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
-	
-	$servername = 'localhost';
-	$username = 'root';
-	$password = 'root';
-	$database = 'application badges';
-	
+	include 'fonctions.php';
+	sessionExiste();
+	include 'bd.php';
+
 	$id = $_POST['id'];
 	$nom = $_POST['nomB'];
 	$prenom = $_POST['prenomB'];
@@ -41,10 +35,7 @@
 	}
 	
 
-	$connexion = new mysqli($servername,$username,$password,$database);
-		if($connexion->connect_error){
-				die('Erreur : ' .$connexion->connect_error);
-		}
+	$connexion = connexion();
 
 	$queryAjoutBadge = mysqli_query($connexion,"INSERT INTO $badge VALUES('$idBadge','$statusB','$id')");
 	

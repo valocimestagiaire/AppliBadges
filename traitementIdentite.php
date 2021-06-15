@@ -1,15 +1,9 @@
 
 <?php
 	
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
-	
-	$servername = 'localhost';
-	$username = 'root';
-	$password = 'root';
-	$database = 'application badges';
+	include 'fonctions.php';
+	sessionExiste();
+	include 'bd.php';
 	
 	if($_POST["valider"] == "Retour"){
 		header("Location: Accueil.php");
@@ -31,10 +25,7 @@
 			exit(0);
 		}
 		
-		$connexion = new mysqli($servername,$username,$password,$database);
-		if($connexion->connect_error){
-				die('Erreur : ' .$connexion->connect_error);
-		}
+		$connexion = connexion();
 		
 		$queryIdExiste =  mysqli_query($connexion,"SELECT * FROM identités WHERE Nom='$nom' and Prénom='$prenom'");
 		

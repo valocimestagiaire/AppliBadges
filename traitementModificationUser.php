@@ -1,15 +1,9 @@
 
 <?php
 	
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
-	
-	$servername = 'localhost';
-	$username = 'root';
-	$password = 'root';
-	$database = 'application badges';
+	include 'fonction.php';
+	sessionExiste();
+	include 'bd.php';
 	
 	if($_POST["valider"] == "Retour"){
 		header("Location: AfficherComptes.php");
@@ -30,20 +24,16 @@
 			exit(0);
 		}
 		
-		$connexion = new mysqli($servername,$username,$password,$database);
-		if($connexion->connect_error){
-				die('Erreur : ' .$connexion->connect_error);
-		}
+		$connexion = connexion();
 
 		$queryUpdate = mysqli_query($connexion,"UPDATE utilisateurs SET Login='$login', mdp='$mdp', Nom='$nom', Prénom='$prenom', Rôle='$role' WHERE Login='$ancienLogin'");
 		
 		header("Location: AfficherComptes.php");
 		mysqli_close($connexion);			
 	
-	
 	}
 	else{
-		header("Location: CreationCompte.php?erreur=champs&log='$login'&type=mod");
+		header("Location: AfficherComptes.php?erreur=champs");
 		exit(0);
 	}
 

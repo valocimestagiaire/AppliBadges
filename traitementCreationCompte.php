@@ -1,15 +1,9 @@
 
 <?php
 	
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
-	
-	$servername = 'localhost';
-	$username = 'root';
-	$password = 'root';
-	$database = 'application badges';
+	include 'fonctions.php';
+	sessionExiste();
+	include 'bd.php';
 	
 	if($_POST["valider"] == "Retour"){
 		header("Location: AfficherComptes.php");
@@ -29,10 +23,7 @@
 			exit(0);
 		}
 		
-		$connexion = new mysqli($servername,$username,$password,$database);
-		if($connexion->connect_error){
-				die('Erreur : ' .$connexion->connect_error);
-		}
+		$connexion = connexion();
 		
 		$queryUserExist = mysqli_query($connexion,"SELECT * FROM utilisateurs WHERE Login='$login'");
 		if($nb_lignes = mysqli_num_rows($queryUserExist) > 0){

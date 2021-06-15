@@ -1,0 +1,121 @@
+<?php
+
+function sessionExiste(){
+	session_start();
+	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
+		header("Location: Connexion.php");
+	}
+	
+}
+
+
+function messageConnexion(){
+	if(isset($_GET['erreur'])){
+		if($_GET['erreur'] == "mauvaislog"){
+			echo "Login ou mot de passe incorrect";
+		}
+		else{
+			echo "Login ou mot de passe manquant";
+		}
+	}
+	
+}
+
+function erreurAccueil(){
+	if(isset($_GET['erreur'])){
+		if($_GET['erreur'] == "modBadge"){
+			echo "<script>alert('Un ou plusieurs champ(s) est/sont manquant(s) lors de la modification de cette identité ainsi que de ses badges, Veuillez recommencer votre opération.');</script>";
+		}elseif($_GET['erreur'] == "NPlong"){
+			echo "<script>alert('Le nom ou prénom que vous souhaitez modifier est trop long, Veuillez recommencer votre opération.');</script>";
+		}
+	}
+}
+
+function titleAffichageBadges(){
+	if($_GET['type'] == "PERDU"){
+		echo "<title>VALOCIME/ Application Badges - Affichage des badges perdus</title>";
+	}
+	else{
+		echo "<title>VALOCIME/ Application Badges - Affichage des badges prêtés</title>";
+	}
+}
+
+function h1AffichageBadge(){
+	if($_GET['type'] == "PERDU"){
+		echo "<h1>Les Badges Perdus</h1>";
+	}
+	else{
+		echo "<h1>Les Badges Prêtés</h1>";
+	}
+}
+
+function erreurBadges(){
+	if(!empty($_GET['erreur'])){
+		if($_GET['erreur'] == "idLong12"){
+			echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (12 caractères max), Veuillez recommencer votre opération.');</script>";
+		}
+		elseif($_GET['erreur'] == "idLong10"){
+			echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (10 caractères max), Veuillez recommencer votre opération.');</script>";
+		}
+		else{
+			echo "<script>alert('Le badge que vous souhaitez créer possède un id trop long (8 caractères max), Veuillez recommencer votre opération.');</script>";
+		}
+	}
+}
+
+function statusModBadges($statusBadge){
+	if($statusBadge == 'ACTIF'){
+		echo"
+		<option selected value='ACTIF'>ACTIF</option>
+		<option value='PERDU'>PERDU</option>
+		<option value='PRET'>PRET</option>";
+	}elseif($statusBadge == 'PERDU'){
+		echo"
+		<option value='ACTIF'>ACTIF</option>
+		<option selected value='PERDU'>PERDU</option>
+		<option value='PRET'>PRET</option>";
+	}else{
+		echo "
+		<option value='ACTIF'>ACTIF</option>
+		<option value='PERDU'>PERDU</option>
+		<option selected value='PRET'>PRET</option>";
+	}
+	
+}
+
+function erreurCreationIdentite(){
+	if(!empty($_GET['erreur'])){
+		if($_GET['erreur'] == "champs"){
+			echo "Un ou plusieurs champs sont manquants";
+		}
+		elseif($_GET['erreur'] == "NPlong"){
+			echo "Le nom ou prénom entré est trop long";
+		}
+		elseif($_GET['erreur'] == "idExiste"){
+			echo "Cette personne existe déja";
+		}
+	}
+}
+
+function erreurCreationCompte(){
+	if(!empty($_GET['erreur'])){
+		if($_GET['erreur'] == "champs"){
+			echo "Un ou plusieurs champs sont manquants";
+		}
+		elseif($_GET['erreur'] == "NPlong"){
+			echo "Le nom ou prénom entré est trop long";
+		}
+		elseif($_GET['erreur'] == "logExist"){
+				echo "Cet utilisateur possède déjà un compte";
+		}
+	}
+}
+
+function erreurModificationCompte(){
+	if(!empty($_GET['erreur'])){
+		if($_GET['erreur'] == "champs"){
+			echo "<script>alert('Un ou plusieurs champ(s) est/sont manquant(s) lors de la modification de cette identité ainsi que de ses badges, Veuillez recommencer votre opération.');</script>";
+		}
+	}
+}
+?>

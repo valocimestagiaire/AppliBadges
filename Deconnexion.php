@@ -1,13 +1,9 @@
 <?php
 
-	session_start();
-	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
-	}
+	include 'fonctions.php';
+	sessionExiste();
 
-	session_start();
 	session_destroy();
-	
 	header("Location: Connexion.php");
 
 	

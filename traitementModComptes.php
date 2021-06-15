@@ -1,31 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-		<link href="css/PageConnexion.css"/ rel="stylesheet">
+		<?php include 'head.php'; ?>
 		<title>VALOCIME/ Application Badges - Modification d'un compte utilisateur</title>
 	</head>
 	<body>
 		<?php
 			
-			session_start();
-			if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-				header("Location: Connexion.php");
-			}
+			include 'fonctions.php';
+			sessionExiste();
+			include 'bd.php';
 			
-			$servername = 'localhost';
-			$username = 'root';
-			$password = 'root';
-			$database = 'application badges';
-			$login = $_GET['log'];
-			$role = $_GET['role'];
+			$connexion = connexion();
 			
 			if($_GET['type'] == "mod"){
-				$connexion = new mysqli($servername,$username,$password,$database);
-				if($connexion->connect_error){
-						die('Erreur : ' .$connexion->connect_error);
-				}
 				
 				$queryModif = mysqli_query($connexion,"SELECT * FROM utilisateurs WHERE Login='$login'");
 				$user_modification = mysqli_fetch_array($queryModif);?>				
@@ -35,18 +23,9 @@
 					<div class="d-flex justify-content-center align-middle form_container border rounded blue-container cadre">
 						<fieldset>
 							<legend>Nouvelles informations</legend>
-						
-
-						
+												
 							<form method="POST" action="traitementModificationUser.php">
 								<div class="form-group red-text">
-									<?php
-										if(!empty($_GET['erreur'])){
-											if($_GET['erreur'] == "champs"){
-												echo "Un ou plusieurs champs sont manquants";
-											}
-										}
-									?>
 								</div>		
 								<div class="form-group">
 									</br>
@@ -111,15 +90,13 @@
 				
 		<?php
 			}elseif($_GET['type'] == "supp"){
-				$connexion = new mysqli($servername,$username,$password,$database);
-				if($connexion->connect_error){
-						die('Erreur : ' .$connexion->connect_error);
-				}
-				
+
 				$querySupp = mysqli_query($connexion,"DELETE FROM utilisateurs WHERE Login='$login'");
+				
 				header("Location: AfficherComptes.php");
 				exit(0);
 			}
+			mysqli_close($connexion);
 		?>
 	</body>
 </html>
