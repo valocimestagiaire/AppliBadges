@@ -5,11 +5,11 @@
 		<title>VALOCIME/ Application Badges - Création d'un compte utilisateur</title>
 	</head>
 	<body>
-		<?php
+		<?php 
 			include 'fonctions.php';
 			sessionExiste();
 			include 'menu.php';
-		
+			if($_SESSION['role'] == "Administrateur"){
 		?>
 		<h1>Création d'un compte</h1>
 		<div class="conteneur">
@@ -80,3 +80,8 @@
 		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>
+			<?php 
+			}else{
+				header("Location: Accueil.php");
+			}	
+			?>

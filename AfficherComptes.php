@@ -12,6 +12,7 @@
 			erreurModificationCompte();
 			include 'bd.php';
 			include 'menu.php';
+			if($_SESSION['role'] == "Administrateur"){
 		
 		?>
 		
@@ -41,3 +42,8 @@
 		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>
+<?php
+			}else{
+				header("Location: Accueil.php");
+			}
+?>

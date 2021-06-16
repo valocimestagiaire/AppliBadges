@@ -6,23 +6,45 @@
 	include 'bd.php';
 
 	$id = $_POST['id'];
+	$nom = $_POST['nomB'];
+	$prenom = $_POST['prenomB'];
 
 	$connexion = connexion();
 
-	foreach($_POST['Télécommande'] as $tele){
-		$query = mysqli_query($connexion,"DELETE FROM telecommande WHERE Id_Identité = '$id' AND Id_Télécommande = '$tele'");
+	if(isset($_POST['Télécommande'])){
+		foreach($_POST['Télécommande'] as $tele){
+			$query = mysqli_query($connexion,"UPDATE telecommande SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Télécommande = '$tele'");
+		}
 	}
 	
-	foreach($_POST['badge_noir'] as $badgeN){
-		$query = mysqli_query($connexion,"DELETE FROM badge_noir WHERE Id_Identité = '$id' AND Id_Badge_Noir = '$badgeN'");
+	if(isset($_POST['badge_noir'])){
+		foreach($_POST['badge_noir'] as $badgeN){
+			$query = mysqli_query($connexion,"UPDATE badge_noir SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Badge_Noir = '$badgeN'");
+		}
 	}
 	
-	foreach($_POST['badge_bleu'] as $badgeB){
-		$query = mysqli_query($connexion,"DELETE FROM badge_bleu WHERE Id_Identité = '$id' AND Id_Badge_Bleu = '$badgeB'");
+	if(isset($_POST['badge_bleu'])){
+		foreach($_POST['badge_bleu'] as $badgeB){
+			$query = mysqli_query($connexion,"UPDATE badge_bleu SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Badge_Bleu = '$badgeB'");
+		}
 	}
 	
-	foreach($_POST['cafe'] as $cafe){
-		$query = mysqli_query($connexion,"DELETE FROM cafe WHERE Id_Identité = '$id' AND Id_Café = '$cafe'");
+	if(isset($_POST['cafe'])){
+		foreach($_POST['cafe'] as $cafe){
+			$query = mysqli_query($connexion,"UPDATE cafe SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Café = '$cafe'");
+		}
+	}
+	
+	if(isset($_POST['parking'])){
+		foreach($_POST['parking'] as $parking){
+			$query = mysqli_query($connexion,"UPDATE parking SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Parking = '$parking'");
+		}
+	}
+	
+	if(isset($_POST['alarme'])){
+		foreach($_POST['alarme'] as $alarme){
+			$query = mysqli_query($connexion,"UPDATE alarme SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Alarme = '$alarme'");
+		}
 	}
 	
 	header("Location: Badges.php?id=$id&nom=$nom&prenom=$prenom");

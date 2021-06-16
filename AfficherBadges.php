@@ -31,21 +31,29 @@
 				
 				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom FROM identites ORDER BY Nom");
 				foreach($query as $id){
-					$queryBadgeTele = mysqli_query($connexion,"SELECT * FROM telecommande WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeTele = mysqli_query($connexion,"SELECT * FROM telecommande WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
 					foreach($queryBadgeTele as $tele){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Télécommande</td><td>".$tele['Id_Télécommande']."</td></tr>";
 					}
-					$queryBadgeNoir = mysqli_query($connexion,"SELECT * FROM badge_noir WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeNoir = mysqli_query($connexion,"SELECT * FROM badge_noir WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
 					foreach($queryBadgeNoir as $badgeN){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Badge Noir</td><td>".$badgeN['Id_Badge_Noir']."</td></tr>";
 					}
-					$queryBadgeBleu = mysqli_query($connexion,"SELECT * FROM badge_bleu WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeBleu = mysqli_query($connexion,"SELECT * FROM badge_bleu WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
 					foreach($queryBadgeBleu as $badgeB){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Badge Bleu</td><td>".$badgeB['Id_Badge_Bleu']."</td></tr>";
 					}
-					$queryBadgeCafe = mysqli_query($connexion,"SELECT * FROM cafe WHERE Id_Identité=".$id['Id_Identité']." AND Status='$status'");
+					$queryBadgeCafe = mysqli_query($connexion,"SELECT * FROM cafe WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
 					foreach($queryBadgeCafe as $cafe){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Café</td><td>".$cafe['Id_Café']."</td></tr>";
+					}
+					$queryBadgeParking = mysqli_query($connexion,"SELECT * FROM parking WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
+					foreach($queryBadgeParking as $parking){
+						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Parking</td><td>".$parking['Id_Parking']."</td></tr>";
+					}
+					$queryBadgeAlarme = mysqli_query($connexion,"SELECT * FROM alarme WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
+					foreach($queryBadgeAlarme as $alarme){
+						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Alarme</td><td>".$alarme['Id_Alarme']."</td></tr>";
 					}
 				}
 				

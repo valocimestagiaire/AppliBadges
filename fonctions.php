@@ -63,22 +63,31 @@ function erreurBadges(){
 	}
 }
 
-function statusModBadges($statusBadge){
-	if($statusBadge == 'ACTIF'){
+function StatutModBadges($StatutBadge){
+	if($StatutBadge == 'ACTIF'){
 		echo"
 		<option selected value='ACTIF'>ACTIF</option>
 		<option value='PERDU'>PERDU</option>
-		<option value='PRET'>PRET</option>";
-	}elseif($statusBadge == 'PERDU'){
+		<option value='PRET'>PRET</option>
+		<option value='RENDU'>RENDU</option>";
+	}elseif($StatutBadge == 'PERDU'){
 		echo"
 		<option value='ACTIF'>ACTIF</option>
 		<option selected value='PERDU'>PERDU</option>
-		<option value='PRET'>PRET</option>";
+		<option value='PRET'>PRET</option>
+		<option value='RENDU'>RENDU</option>";
+	}elseif($StatutBadge == 'PRET'){
+		echo "
+		<option value='ACTIF'>ACTIF</option>
+		<option value='PERDU'>PERDU</option>
+		<option selected value='PRET'>PRET</option>
+		<option value='RENDU'>RENDU</option>";
 	}else{
 		echo "
 		<option value='ACTIF'>ACTIF</option>
 		<option value='PERDU'>PERDU</option>
-		<option selected value='PRET'>PRET</option>";
+		<option value='PRET'>PRET</option>
+		<option selected value='RENDU'>RENDU</option>";
 	}
 	
 }

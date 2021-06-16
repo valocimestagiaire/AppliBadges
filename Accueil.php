@@ -9,6 +9,7 @@
 			include 'fonctions.php';
 			sessionExiste();
 			erreurAccueil();
+			erreurBadges();
 			include 'menu.php';
 			include 'bd.php';
 		?>
@@ -37,19 +38,21 @@
 			<?php
 				$connexion = connexion();
 				
-				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Alarme,Parking,Pass,Accès_Bureau,Période,Bureau_FZ FROM identites ORDER BY Nom");
-				$idChoisi = "";
+				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Pass,Accès_Bureau,Période,Bureau_FZ FROM identites ORDER BY Nom");
+				
+				
+				
 				foreach($query as $id){
 					echo"<tr class='rowTable'>
 							<td class='colonneCachee'>".$id['Id_Identité']."</td>
 							<td class='nom'>".$id['Nom']."</td>
 							<td class='prenom'>".$id['Prénom']."</td>
+							<td>aaa</br>bbb</td>
 							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
-							<td>".$id['Alarme']."</td>
-							<td>".$id['Parking']."</td>
+							<td></td>
 							<td>".$id['Pass']."</td>
 							<td>".$id['Accès_Bureau']."</td>
 							<td>".$id['Bureau_FZ']."</td>

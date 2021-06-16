@@ -45,27 +45,6 @@
 						<legend> Badges</legend>
 						<div class="form-group">
 							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Alarme Verisure</span>
-								</div>
-								<select class="form-select" name="verisure" aria-label="Default select example">
-									<option selected value="OUI">Oui</option>
-									<option value="NON">Non</option>
-									
-								</select>
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
-									<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Parking</span>
-								</div>
-								<select class="form-select" name="parking" aria-label="Default select example">
-									<option selected value="OUI">Oui</option>
-									<option value="NON">Non</option>									
-								</select>
-							</div>
-							</br>
-							<div class="input-group input-groupe-sm">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
 								</div>

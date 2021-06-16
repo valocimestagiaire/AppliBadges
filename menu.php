@@ -6,21 +6,25 @@
 		<a class="nav-link" href="CreationIdentite.php">Nouvelle identité</a>
 	</li>
 	<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Informations Badges</a>
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Badges</a>
 		<div class="dropdown-menu">
 			<a class="dropdown-item" href="AfficherBadges.php?type=PERDU">Afficher les badges perdus</a>
-			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="AfficherBadges.php?type=PRET">Afficher les badges prêtés</a>
-		</div>
-	</li>
-	<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des comptes</a>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" href="AfficherComptes.php">Afficher les comptes</a>
 			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="CreationCompte.php">Créer un compte</a>
+			<a class="dropdown-item" href="creationBadge.php">Créer un Badge</a>
 		</div>
 	</li>
+	<?php 
+		if($_SESSION['role'] == "Administrateur"){ ?>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des comptes</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="AfficherComptes.php">Afficher les comptes</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="CreationCompte.php">Créer un compte</a>
+			</div>
+		</li>
+	<?php } ?>
 	<li class="nav-item">
 		<a class="nav-link" onclick="deconnexion()">Déconnexion</a>
 	</li>

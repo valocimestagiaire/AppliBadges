@@ -119,3 +119,16 @@ h1,h6{
 	right: 1px;
 	width: 400px;
 }
+
+.badge{
+	width: 300px !important;
+	
+}
+
+.afficher{
+	display: block;
+}
+
+.cacher{
+	display: none;
+}
