@@ -146,19 +146,19 @@ function lastBadge($table,$idTable,$connexion,$id){
 					$teleStatut="";
 				}else{
 					$teleLast=$renduFetch[$idTable];
-					$teleStatut=$renduFetch['Statut'];
+					$teleStatut=$renduFetch['Statut']."</br>";
 				}
 			}else{
 				$teleLast=$perduFetch[$idTable];
-				$teleStatut=$perduFetch['Statut'];
+				$teleStatut=$perduFetch['Statut']."</br>";
 			}
 		}else{
 			$teleLast=$actifFetch[$idTable];
-			$teleStatut=$actifFetch['Statut'];
+			$teleStatut=$actifFetch['Statut']."</br>";
 		}
 	}else{
 		$teleLast=$pretFetch[$idTable];
-		$teleStatut=$pretFetch['Statut'];
+		$teleStatut=$pretFetch['Statut']."</br>";
 	}
 	
 	return array($teleStatut,$teleLast);

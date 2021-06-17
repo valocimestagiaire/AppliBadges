@@ -15,7 +15,6 @@
 			include 'bd.php';
 		?>
 		
-		
 		<h1>Toutes les identités</h1>
 		<h6>Cliquez sur une ligne pour voir le détail des badges que l'identité possède</h6>
 		<table class="table table-striped table-dark table-hover table-bordered text-center d-flex justify-content-center">
@@ -48,19 +47,19 @@
 					$parking = lastBadge("parking","Id_Parking",$connexion,$id);
 					
 					echo"<tr class='rowTable'>
-							<td class='colonneCachee'>".$id['Id_Identité']."</td>
-							<td class='nom'>".$id['Nom']."</td>
-							<td class='prenom'>".$id['Prénom']."</td>
-							<td class='justify-content-center'>".$tele[0]."</br>".$tele[1]."</td>
-							<td>".$badgeN[0]."</br>".$badgeN[1]."</td>
-							<td>".$badgeB[0]."</br>".$badgeB[1]."</td>
-							<td>".$cafe[0]."</br>".$cafe[1]."</td>
-							<td>".$alarme[0]."</br>".$alarme[1]."</td>
-							<td>".$parking[0]."</br>".$parking[1]."</td>
-							<td>".$id['Pass']."</td>
-							<td>".$id['Accès_Bureau']."</td>
-							<td>".$id['Bureau_FZ']."</td>
-							<td>".$id['Période']."</td>
+							<td class='colonneCachee align-middle'>".$id['Id_Identité']."</td>
+							<td class='nom align-middle'>".$id['Nom']."</td>
+							<td class='prenom align-middle'>".$id['Prénom']."</td>
+							<td class='justify-content-center align-middle'>".$tele[0]."".$tele[1]."</td>
+							<td class='justify-content-center align-middle'>".$badgeN[0]."".$badgeN[1]."</td>
+							<td class='justify-content-center align-middle'>".$badgeB[0]."".$badgeB[1]."</td>
+							<td class='justify-content-center align-middle'>".$cafe[0]."".$cafe[1]."</td>
+							<td class='justify-content-center align-middle'>".$alarme[0]."".$alarme[1]."</td>
+							<td class='justify-content-center align-middle'>".$parking[0]."".$parking[1]."</td>
+							<td class='align-middle'>".$id['Pass']."</td>
+							<td class='align-middle'>".$id['Accès_Bureau']."</td>
+							<td class='align-middle'>".$id['Bureau_FZ']."</td>
+							<td class='align-middle'>".$id['Période']."</td>
 						</tr>";
 				}
 				
@@ -68,12 +67,6 @@
 				
 			?>
 		</table>
-		
-		
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="scripts.js"></script>
-		
 	</body>
 </html>

@@ -1,7 +1,7 @@
 
 <?php
 	
-	include 'fonction.php';
+	include 'fonctions.php';
 	sessionExiste();
 	include 'bd.php';
 	

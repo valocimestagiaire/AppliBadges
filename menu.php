@@ -26,21 +26,23 @@
 		</li>
 	<?php } ?>
 	<li class="nav-item">
-		<a class="nav-link" onclick="deconnexion()"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+		<a class="nav-link" href="" onclick="deconnexion()"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link disabled" href="Connexion.php"><i class="fa fa-info" aria-hidden="true"></i> <?php echo "Rôle: ".$_SESSION['role']?></a>
+		<a class="nav-link disabled"><i class="fa fa-info" aria-hidden="true"></i> <?php echo "Rôle: ".$_SESSION['role']?></a>
+	</li>
+	<li class="nav-item ms-auto">
+		<form method="POST" action="traitementRecherche.php">
+			<div class="input-group search">
+				<div class="input-group-append">
+					<button class="btn btn-primary justify-content-center" style="float:right" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+							<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+						</svg>
+					</button>
+				</div>
+				<input type="text" style="float:left" class="form-control" placeholder="ID du Badge" name="srch-term">
+			</div>
+		</form>
 	</li>
 </ul>
-<form method="POST" action="traitementRecherche.php">
-	<div class="input-group search">
-		<div class="input-group-append">
-			<button class="btn btn-primary justify-content-center" style="float:right" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-				</svg>
-			</button>
-		</div>
-		<input type="text" style="float:left" class="form-control" placeholder="Chercher" name="srch-term">
-	</div>
-</form>
