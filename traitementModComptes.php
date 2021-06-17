@@ -100,5 +100,6 @@
 			}
 			mysqli_close($connexion);
 		?>
+		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>
