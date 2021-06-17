@@ -1,7 +1,7 @@
 function deconnexion(){
 	location.replace("Deconnexion.php");
 }
-
+	
 $(".rowTable").click(function() {
 	var $id = $(this).find(".colonneCachee").text();
 	var $nom = $(this).find(".nom").text();
@@ -21,3 +21,5 @@ $(".btn-danger").click(function() {
 	var $text = $row.find(".log").text();	
 	location.replace("traitementModComptes.php?log="+$text+"&type=supp");
 });
+
+

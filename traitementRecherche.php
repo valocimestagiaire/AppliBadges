@@ -12,7 +12,7 @@
 			sessionExiste();
 			include 'menu.php';
 			include 'bd.php';
-					?>
+		?>
 		
 		<h1>Résultat de la recherche pour "<?php echo $_POST['srch-term'] ?>"</h1>
 		<table class="table table-striped table-dark table-hover table-bordered d-flex justify-content-center">

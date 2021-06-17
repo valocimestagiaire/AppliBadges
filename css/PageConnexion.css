@@ -117,7 +117,7 @@ h1,h6{
 	position: absolute;
 	top: 1px;
 	right: 1px;
-	width: 400px;
+	width: 300px;
 }
 
 .badge{
@@ -126,9 +126,21 @@ h1,h6{
 }
 
 .afficher{
-	display: block;
+	display: flex;
 }
 
 .cacher{
 	display: none;
+}
+/*
+.img-container{
+	padding-top: 100px;
+	margin-bottom: -70px !important;
+}*/
+
+.img-circle{
+	border-radius: 50%;
+	background-color: white;
+	width: 100px;
+	height: 100px;
 }

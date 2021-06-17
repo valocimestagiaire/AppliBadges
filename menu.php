@@ -1,12 +1,12 @@
 <ul class="nav nav-tabs">
 	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="Accueil.php">Accueil</a>
+		<a class="nav-link active" aria-current="page" href="Accueil.php"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="CreationIdentite.php">Nouvelle identité</a>
+		<a class="nav-link" href="CreationIdentite.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> Nouvelle identité</a>
 	</li>
 	<li class="nav-item dropdown">
-		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Badges</a>
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tags" aria-hidden="true"></i> Badges</a>
 		<div class="dropdown-menu">
 			<a class="dropdown-item" href="AfficherBadges.php?type=PERDU">Afficher les badges perdus</a>
 			<a class="dropdown-item" href="AfficherBadges.php?type=PRET">Afficher les badges prêtés</a>
@@ -17,7 +17,7 @@
 	<?php 
 		if($_SESSION['role'] == "Administrateur"){ ?>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des comptes</a>
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Gestion des comptes</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item" href="AfficherComptes.php">Afficher les comptes</a>
 				<div class="dropdown-divider"></div>
@@ -26,10 +26,10 @@
 		</li>
 	<?php } ?>
 	<li class="nav-item">
-		<a class="nav-link" onclick="deconnexion()">Déconnexion</a>
+		<a class="nav-link" onclick="deconnexion()"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link disabled" href="Connexion.php"><?php echo "Rôle: ".$_SESSION['role']?></a>
+		<a class="nav-link disabled" href="Connexion.php"><i class="fa fa-info" aria-hidden="true"></i> <?php echo "Rôle: ".$_SESSION['role']?></a>
 	</li>
 </ul>
 <form method="POST" action="traitementRecherche.php">

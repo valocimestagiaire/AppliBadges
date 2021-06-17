@@ -127,4 +127,41 @@ function erreurModificationCompte(){
 		}
 	}
 }
+
+
+function lastBadge($table,$idTable,$connexion,$id){
+	$queryPret = mysqli_query($connexion,"SELECT * FROM $table WHERE Id_Identité=".$id['Id_Identité']." AND Statut='PRET'");
+	$pretFetch = mysqli_fetch_array($queryPret);
+	if($nb_lignes = mysqli_num_rows($queryPret) < 1){
+		$queryActif = mysqli_query($connexion,"SELECT * FROM $table WHERE Id_Identité=".$id['Id_Identité']." AND Statut='ACTIF'");
+		$actifFetch = mysqli_fetch_array($queryActif);
+		if($nb_lignes = mysqli_num_rows($queryActif) < 1){
+			$queryPerdu = mysqli_query($connexion,"SELECT * FROM $table WHERE Id_Identité=".$id['Id_Identité']." AND Statut='PERDU'");
+			$perduFetch = mysqli_fetch_array($queryPerdu);
+			if($nb_lignes = mysqli_num_rows($queryPerdu) < 1){
+				$queryRendu = mysqli_query($connexion,"SELECT * FROM $table WHERE Id_Identité=".$id['Id_Identité']." AND Statut='RENDU'");
+				$renduFetch = mysqli_fetch_array($queryRendu);
+				if($nb_lignes = mysqli_num_rows($queryRendu) < 1){
+					$teleLast = "AUCUN";
+					$teleStatut="";
+				}else{
+					$teleLast=$renduFetch[$idTable];
+					$teleStatut=$renduFetch['Statut'];
+				}
+			}else{
+				$teleLast=$perduFetch[$idTable];
+				$teleStatut=$perduFetch['Statut'];
+			}
+		}else{
+			$teleLast=$actifFetch[$idTable];
+			$teleStatut=$actifFetch['Statut'];
+		}
+	}else{
+		$teleLast=$pretFetch[$idTable];
+		$teleStatut=$pretFetch['Statut'];
+	}
+	
+	return array($teleStatut,$teleLast);
+}
+		
 ?>
