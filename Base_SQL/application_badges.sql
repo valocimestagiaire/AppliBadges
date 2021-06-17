@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 17 juin 2021 à 09:59
+-- Généré le : jeu. 17 juin 2021 à 13:08
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.1
 
@@ -60,13 +60,13 @@ CREATE TABLE `badge_bleu` (
 --
 
 INSERT INTO `badge_bleu` (`Id_Badge_Bleu`, `Statut`, `Id_Identité`) VALUES
-('1234567890', 'PERDU', 1),
-('azertyuiop', 'ACTIF', 2),
 ('C412190E', 'RENDU', 1),
 ('C412190F', 'ACTIF', 1),
-('C412190G', 'PRET', NULL),
+('C412190G', 'PERDU', 32),
 ('C412190H', 'ACTIF', NULL),
-('htrhr', 'ACTIF', 30);
+('C412190i', 'PERDU', 1),
+('C412190J', 'RENDU', NULL),
+('C412190K', 'RENDU', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,7 +88,7 @@ INSERT INTO `badge_noir` (`Id_Badge_Noir`, `Statut`, `Id_Identité`) VALUES
 ('0378002187', 'RENDU', NULL),
 ('0378002188', 'ACTIF', 1),
 ('0378002189', 'RENDU', 2),
-('0378002190', 'ACTIF', NULL),
+('0378002190', 'RENDU', NULL),
 ('0378002191', 'PRET', 1);
 
 -- --------------------------------------------------------
@@ -108,13 +108,13 @@ CREATE TABLE `cafe` (
 --
 
 INSERT INTO `cafe` (`Id_Café`, `Statut`, `Id_Identité`) VALUES
-('45er84r5', 'ACTIF', 1),
+('61973201', 'ACTIF', 1),
 ('61973202', 'ACTIF', 2),
 ('61973203', 'PERDU', 1),
 ('61973204', 'RENDU', NULL),
 ('61973205', 'PRET', NULL),
-('a78z5685', 'PERDU', 1),
-('rthth', 'PERDU', 30);
+('61973206', 'PERDU', 1),
+('61973207', 'PERDU', 30);
 
 -- --------------------------------------------------------
 
@@ -139,31 +139,9 @@ CREATE TABLE `identites` (
 INSERT INTO `identites` (`Id_Identité`, `Nom`, `Prénom`, `Pass`, `Accès_Bureau`, `Bureau_FZ`, `Période`) VALUES
 (1, 'aaa', 'aaa', 'OUI', 'OUI', 'OUI', 'Du Lundi au Vendredi'),
 (2, 'bbb', 'bbb', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(7, 'ddd', 'ddd', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(8, 'eee', 'eee', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(9, 'fff', 'fff', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(10, 'ggg', 'ggg', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(11, 'hhh', 'hhh', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(12, 'iii', 'iii', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(13, 'jjj', 'jjj', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(14, 'kkk', 'kkk', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(15, 'lll', 'lll', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(16, 'mmm', 'mmm', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(17, 'nnn', 'nnn', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(18, 'ooo', 'ooo', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(19, 'ppp', 'ppp', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(20, 'qqq', 'qqq', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(21, 'rrr', 'rrr', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(22, 'sss', 'sss', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(23, 'ttt', 'ttt', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(24, 'uuu', 'uuu', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(25, 'vvv', 'vvv', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(26, 'www', 'www', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(27, 'xxx', 'xxx', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(28, 'yyy', 'yyy', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(29, 'zzz', 'zzz', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
 (30, 'moi', 'moi', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(31, 'ccc', 'ccc', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi');
+(31, 'ccc', 'ccc', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
+(32, 'ESSAI', 'Essai', 'NON', 'NON', 'NON', 'Du Lundi au Dimanche');
 
 -- --------------------------------------------------------
 
@@ -182,8 +160,12 @@ CREATE TABLE `parking` (
 --
 
 INSERT INTO `parking` (`Id_Parking`, `Statut`, `Id_Identité`) VALUES
-('vdds', 'PRET', 1),
-('zerfdg', 'RENDU', NULL);
+('A12V85B470', 'PRET', 1),
+('A12V85B471', 'RENDU', NULL),
+('A12V85B472', 'RENDU', NULL),
+('A12V85B473', 'RENDU', NULL),
+('A12V85B474', 'RENDU', NULL),
+('A12V85B475', 'RENDU', NULL);
 
 -- --------------------------------------------------------
 
@@ -204,12 +186,10 @@ CREATE TABLE `telecommande` (
 INSERT INTO `telecommande` (`Id_Télécommande`, `Statut`, `Id_Identité`) VALUES
 ('A3702E6885J2', 'PERDU', 2),
 ('A3702E6885J3', 'PERDU', 31),
-('azerty', 'ACTIF', NULL),
-('azertyuiopqs', 'ACTIF', 2),
-('baba', 'ACTIF', 1),
-('fdsg', 'PRET', 1),
-('htfhrh', 'ACTIF', 30),
-('trh', 'RENDU', 1);
+('A3702E6885J4', 'RENDU', NULL),
+('A3702E6885J5', 'RENDU', NULL),
+('A3702E6885J6', 'RENDU', NULL),
+('A3702E6885J7', 'RENDU', NULL);
 
 -- --------------------------------------------------------
 
@@ -301,7 +281,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `identites`
 --
 ALTER TABLE `identites`
-  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Contraintes pour les tables déchargées
