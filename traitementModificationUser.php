@@ -6,7 +6,7 @@
 	include 'bd.php';
 	
 	if($_POST["valider"] == "Retour"){
-		header("Location: AfficherComptes.php");
+		header("Location: afficherComptes.php");
 		exit(0);
 	}
 	
@@ -20,7 +20,7 @@
 		$ancienLogin = $_POST['ancienLog'];
 		
 		if(strlen($nom)>20 OR strlen($prenom)>20){
-			header("Location: AfficherComptes.php?erreur=NPlong");
+			header("Location: afficherComptes.php?erreur=NPlong");
 			exit(0);
 		}
 		
@@ -28,12 +28,12 @@
 
 		$queryUpdate = mysqli_query($connexion,"UPDATE utilisateurs SET Login='$login', mdp='$mdp', Nom='$nom', Prénom='$prenom', Rôle='$role' WHERE Login='$ancienLogin'");
 		
-		header("Location: AfficherComptes.php");
+		header("Location: afficherComptes.php");
 		mysqli_close($connexion);			
 	
 	}
 	else{
-		header("Location: AfficherComptes.php?erreur=champs");
+		header("Location: afficherComptes.php?erreur=champs");
 		exit(0);
 	}
 

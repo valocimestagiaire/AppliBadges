@@ -1,17 +1,22 @@
 <ul class="nav nav-tabs">
 	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="Accueil.php"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+		<a class="nav-link active" aria-current="page" href="accueil.php"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
 	</li>
-	<li class="nav-item">
-		<a class="nav-link" href="CreationIdentite.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> Nouvelle identité</a>
-	</li>
+	<?php
+		if($_SESSION['role'] != "Invité"){?>
+		<li class="nav-item">
+			<a class="nav-link" href="creationIdentite.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> Nouvelle identité</a>
+		</li>
+	<?php } ?>
 	<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-tags" aria-hidden="true"></i> Badges</a>
 		<div class="dropdown-menu">
-			<a class="dropdown-item" href="AfficherBadges.php?type=PERDU">Afficher les badges perdus</a>
-			<a class="dropdown-item" href="AfficherBadges.php?type=PRET">Afficher les badges prêtés</a>
-			<div class="dropdown-divider"></div>
-			<a class="dropdown-item" href="creationBadge.php">Créer un Badge</a>
+			<a class="dropdown-item" href="afficherBadges.php?type=PERDU">Afficher les badges perdus</a>
+			<a class="dropdown-item" href="afficherBadges.php?type=PRET">Afficher les badges prêtés</a>
+			<?php if($_SESSION['role'] == "Administrateur"){ ?>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="creationBadge.php">Créer un Badge</a>
+			<?php } ?>
 		</div>
 	</li>
 	<?php 
@@ -19,14 +24,14 @@
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Gestion des comptes</a>
 			<div class="dropdown-menu">
-				<a class="dropdown-item" href="AfficherComptes.php">Afficher les comptes</a>
+				<a class="dropdown-item" href="afficherComptes.php">Afficher les comptes</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="CreationCompte.php">Créer un compte</a>
+				<a class="dropdown-item" href="creationCompte.php">Créer un compte</a>
 			</div>
 		</li>
 	<?php } ?>
 	<li class="nav-item">
-		<a class="nav-link" href="" onclick="deconnexion()"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
+		<a class="nav-link" href="deconnexion.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Déconnexion</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link disabled"><i class="fa fa-info" aria-hidden="true"></i> <?php echo "Rôle: ".$_SESSION['role']?></a>

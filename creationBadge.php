@@ -11,7 +11,7 @@
 			sessionExiste();
 			include 'bd.php';
 			include 'menu.php';
-		
+			if($_SESSION['role'] == "Administrateur"){
 		?>
 		<h1>Création d'un nouveau badge</h1>
 		<div class="conteneur">
@@ -106,6 +106,11 @@
 			}
 		</script>
 		<script type="text/javascript" src="scripts.js"></script>
+			<?php
+				}else{
+					header("Location: accueil.php");
+				} 
+			?>
 	</body>
 	
 </html>

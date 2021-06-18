@@ -1,7 +1,3 @@
-function deconnexion(){
-	location.replace("Deconnexion.php");
-}
-	
 $(".rowTable").click(function() {
 	var $id = $(this).find(".colonneCachee").text();
 	var $nom = $(this).find(".nom").text();

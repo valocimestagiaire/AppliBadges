@@ -3,7 +3,7 @@
 function sessionExiste(){
 	session_start();
 	if(!isset($_SESSION['login']) OR empty($_SESSION['login'])){
-		header("Location: Connexion.php");
+		header("Location: index.php");
 	}
 	
 }

@@ -12,7 +12,7 @@
 	
 	
 	if($_POST["valider"] == "Retour"){
-		header("Location: Accueil.php");
+		header("Location: accueil.php");
 		exit(0);
 	}
 	

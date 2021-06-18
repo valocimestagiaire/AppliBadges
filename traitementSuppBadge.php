@@ -47,7 +47,7 @@
 		}
 	}
 	
-	header("Location: Badges.php?id=$id&nom=$nom&prenom=$prenom");
+	header("Location: badges.php?id=$id&nom=$nom&prenom=$prenom");
 	mysqli_close($connexion);			
 	
 

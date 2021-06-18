@@ -6,7 +6,7 @@
 	include 'bd.php';
 	
 	if($_POST["valider"] == "Retour"){
-		header("Location: Accueil.php");
+		header("Location: accueil.php");
 		exit(0);
 	}
 	
@@ -21,7 +21,7 @@
 		$periode = $_POST['periode'];
 		
 		if(strlen($nom) > 20 OR strlen($prenom) > 20){
-			header("Location: Accueil.php?erreur=NPlong");
+			header("Location: accueil.php?erreur=NPlong");
 			exit(0);
 		}
 		
@@ -62,7 +62,7 @@
 	
 	}
 	else{
-		header("Location: Accueil.php?erreur=modBadge");
+		header("Location: accueil.php?erreur=modBadge");
 		exit(0);
 	}
 

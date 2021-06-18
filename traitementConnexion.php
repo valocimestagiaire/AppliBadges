@@ -18,10 +18,10 @@
 			$_SESSION['Prenom'] = $user_connecte["Nom"]; 
 			$_SESSION['Nom'] = $user_connecte["Prénom"]; 
 			$_SESSION['role'] = $user_connecte["Rôle"];
-			header("Location: Accueil.php");
+			header("Location: accueil.php");
 		}
 		else{
-			header("Location: Connexion.php?erreur=mauvaislog");
+			header("Location: index.php?erreur=mauvaislog");
 			
 		}
 					
@@ -29,7 +29,7 @@
 		mysqli_close($connexion);			
 	}
 	else{
-		header("Location: Connexion.php?erreur=pasloginoumdp");
+		header("Location: index.php?erreur=pasloginoumdp");
 	}
 ?>
 
