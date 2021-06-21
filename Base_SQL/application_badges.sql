@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 18 juin 2021 à 09:09
+-- Généré le : lun. 21 juin 2021 à 07:08
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.1
 
@@ -137,7 +137,7 @@ CREATE TABLE `identites` (
 --
 
 INSERT INTO `identites` (`Id_Identité`, `Nom`, `Prénom`, `Pass`, `Accès_Bureau`, `Bureau_FZ`, `Période`) VALUES
-(1, 'aaa', 'aaa', 'NON', 'OUI', 'OUI', 'Du Lundi au Vendredi'),
+(1, 'aaa', 'aaa', 'NON', 'NON', 'OUI', 'Du Lundi au Vendredi'),
 (2, 'bbb', 'bbb', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
 (31, 'ccc', 'ccc', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
 (32, 'ESSAI', 'Essai', 'NON', 'OUI', 'NON', 'Du Lundi au Vendredi');
@@ -164,7 +164,8 @@ INSERT INTO `parking` (`Id_Parking`, `Statut`, `Id_Identité`) VALUES
 ('A12V85B472', 'RENDU', NULL),
 ('A12V85B473', 'RENDU', NULL),
 ('A12V85B474', 'RENDU', NULL),
-('A12V85B475', 'RENDU', NULL);
+('A12V85B475', 'RENDU', NULL),
+('gfds45es', 'RENDU', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `identites`
 --
 ALTER TABLE `identites`
-  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Contraintes pour les tables déchargées
