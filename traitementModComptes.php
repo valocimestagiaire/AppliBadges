@@ -21,7 +21,8 @@
 				if($_GET['type'] == "mod"){
 					
 					$queryModif = mysqli_query($connexion,"SELECT * FROM utilisateurs WHERE Login='$login'");
-					$user_modification = mysqli_fetch_array($queryModif);?>				
+					$user_modification = mysqli_fetch_array($queryModif);
+					$role = $user_modification['Rôle'];?>				
 					
 					<h1>Modification du compte</h1>
 					<div class="conteneur">
@@ -70,6 +71,7 @@
 												<?php if($role == "Administrateur"){ ?>
 													<option selected value="Administrateur">Administrateur</option>
 													<option value="Utilisateur">Utilisateur</option>
+													<option value="Invité">Invité</option>
 												<?php }elseif($role == "Responsable"){ ?>
 													<option value="Administrateur">Administrateur</option>
 													<option selected value="Responsable">Responsable</option>
