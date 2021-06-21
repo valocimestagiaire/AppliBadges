@@ -5,6 +5,7 @@
 			include 'head.php';
 			include 'fonctions.php';
 		?>
+		<title>VALOCIME/ Application Badges - Recherche</title>
 	</head>
 	<body>
 		<?php
