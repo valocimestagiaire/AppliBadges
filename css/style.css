@@ -140,3 +140,9 @@ h1,h6{
 th{
 	vertical-align: middle!important;
 }
+
+.img-menu{
+	height: 39px;
+	margin-left: 5px;
+	margin-right: 5px;
+}

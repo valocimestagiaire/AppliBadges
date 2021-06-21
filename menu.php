@@ -50,4 +50,7 @@
 			</div>
 		</form>
 	</li>
+	<li class="nav-item ms-left">
+		<img src="img/logo-valocime.png" class="img-menu" alt="Logo_Valocime">
+	</li>
 </ul>
