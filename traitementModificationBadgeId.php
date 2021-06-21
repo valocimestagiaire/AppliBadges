@@ -29,30 +29,39 @@
 
 		$queryUpdateIdentite = mysqli_query($connexion,"UPDATE identites SET Nom='$nom',Prénom='$prenom',Pass='$pass',Accès_Bureau='$bureau',Bureau_FZ='$FZ',Période='$periode' WHERE Id_Identité='$id'");
 		
-		foreach(array_combine($_POST['id_tele'],$_POST['tele']) as $idTele => $tele){
-			$queryUpdateTele = mysqli_query($connexion,"UPDATE telecommande SET Statut='$tele' WHERE Id_Identité='$id' and Id_Télécommande='$idTele'");
+		if(isset($_POST['id_tele']) and isset($_POST['tele'])){
+			foreach(array_combine($_POST['id_tele'],$_POST['tele']) as $idTele => $tele){
+				$queryUpdateTele = mysqli_query($connexion,"UPDATE telecommande SET Statut='$tele' WHERE Id_Identité='$id' and Id_Télécommande='$idTele'");
+			}
+		}
+		if(isset($_POST['id_badgeN']) and isset($_POST['badgeN'])){
+			foreach(array_combine($_POST['id_badgeN'],$_POST['badgeN']) as $idNoir => $badgeN){
+				$queryUpdateNoir = mysqli_query($connexion,"UPDATE badge_noir SET Statut='$badgeN' WHERE Id_Identité='$id' and Id_Badge_Noir='$idNoir'");
+			}
 		}
 		
-		foreach(array_combine($_POST['id_badgeN'],$_POST['badgeN']) as $idNoir => $badgeN){
-			$queryUpdateNoir = mysqli_query($connexion,"UPDATE badge_noir SET Statut='$badgeN' WHERE Id_Identité='$id' and Id_Badge_Noir='$idNoir'");
+		if(isset($_POST['id_badgeB']) and isset($_POST['badgeB'])){
+			foreach(array_combine($_POST['id_badgeB'],$_POST['badgeB']) as $idBleu => $badgeB){
+				$queryUpdateBleu = mysqli_query($connexion,"UPDATE badge_bleu SET Statut='$badgeB' WHERE Id_Identité='$id' and Id_Badge_Bleu='$idBleu'");
+			}
 		}
 		
-		foreach(array_combine($_POST['id_badgeB'],$_POST['badgeB']) as $idBleu => $badgeB){
-			$queryUpdateBleu = mysqli_query($connexion,"UPDATE badge_bleu SET Statut='$badgeB' WHERE Id_Identité='$id' and Id_Badge_Bleu='$idBleu'");
+		if(isset($_POST['id_cafe']) and isset($_POST['cafe'])){
+			foreach(array_combine($_POST['id_cafe'],$_POST['cafe']) as $idCafe => $badgeC){
+				$queryUpdateCafe = mysqli_query($connexion,"UPDATE cafe SET Statut='$badgeC' WHERE Id_Identité='$id' and Id_Café='$idCafe'");
+			}
 		}
 		
-		foreach(array_combine($_POST['id_cafe'],$_POST['cafe']) as $idCafe => $badgeC){
-			$queryUpdateCafe = mysqli_query($connexion,"UPDATE cafe SET Statut='$badgeC' WHERE Id_Identité='$id' and Id_Café='$idCafe'");
+		if(isset($_POST['id_parking']) and isset($_POST['parking'])){
+			foreach(array_combine($_POST['id_parking'],$_POST['parking']) as $idParking => $parking){
+				$queryUpdateParking = mysqli_query($connexion,"UPDATE parking SET Statut='$parking' WHERE Id_Identité='$id' and Id_Parking='$idParking'");
+			}
 		}
 		
-		foreach(array_combine($_POST['id_parking'],$_POST['parking']) as $idParking => $parking){
-			$queryUpdateParking = mysqli_query($connexion,"UPDATE parking SET Statut='$parking' WHERE Id_Identité='$id' and Id_Parking='$idParking'");
-			echo var_dump($queryUpdateParking);
-		}
-		
-		foreach(array_combine($_POST['id_alarme'],$_POST['alarme']) as $idAlarme => $alarme){
-			$queryUpdateAlarme = mysqli_query($connexion,"UPDATE alarme SET Statut='$alarme' WHERE Id_Identité='$id' and Id_Alarme='$idAlarme'");
-			echo var_dump($queryUpdateAlarme);
+		if(isset($_POST['id_alarme']) and isset($_POST['alarme'])){
+			foreach(array_combine($_POST['id_alarme'],$_POST['alarme']) as $idAlarme => $alarme){
+				$queryUpdateAlarme = mysqli_query($connexion,"UPDATE alarme SET Statut='$alarme' WHERE Id_Identité='$id' and Id_Alarme='$idAlarme'");
+			}
 		}
 		
 		
