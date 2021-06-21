@@ -123,7 +123,7 @@ function erreurCreationCompte(){
 function erreurModificationCompte(){
 	if(!empty($_GET['erreur'])){
 		if($_GET['erreur'] == "champs"){
-			echo "<script>alert('Un ou plusieurs champ(s) est/sont manquant(s) lors de la modification de cette identité ainsi que de ses badges, Veuillez recommencer votre opération.');</script>";
+			echo "<script>alert('Un ou plusieurs champ(s) est/sont manquant(s) lors de la modification de ce compte, Veuillez recommencer votre opération.');</script>";
 		}
 	}
 }

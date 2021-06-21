@@ -93,8 +93,6 @@
 						echo"<tr><td>".$badgeA['Nom']."</td><td>".$badgeA['Prénom']."</td><td>Alarme</td><td>".$badgeA['Id_Alarme']."</td><td>".$badgeA['Statut']."</td></tr>";
 					}
 				}
-
-				
 				
 				mysqli_close($connexion);
 				

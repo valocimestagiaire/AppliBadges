@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<?php include 'head.php'; ?>
-		<title>VALOCIME/ Application Badges - Badges Principaux</title>
+		<title>VALOCIME/ Application Badges - Badges de l'identité</title>
 	</head>
 	<body>
 		<?php

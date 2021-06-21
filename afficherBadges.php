@@ -3,6 +3,7 @@
 	<head>
 		<?php
 			include 'head.php';
+			<title>VALOCIME/ Application Badges -  Types de Badges</title>
 			include 'fonctions.php';
 			titleAffichageBadges();
 		?>
