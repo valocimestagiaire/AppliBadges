@@ -46,11 +46,12 @@
 						<div class="form-group">
 							<div class="input-group input-groupe-sm">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
+									<span class="input-group-text" id="basic-addon1">Parking</span>
 								</div>
-								<select class="form-select" name="FZ" aria-label="Default select example">
+								<select class="form-select" name="parking" aria-label="Default select example">
 									<option selected value="NON">Non</option>
 									<option value="OUI">Oui</option>
+									<option value="CODE">Code</option>
 								</select>
 							</div>
 							</br>
@@ -69,6 +70,16 @@
 									<span class="input-group-text" id="basic-addon1">Clé Accès Bureau</span>
 								</div>
 								<select class="form-select" name="bureau" aria-label="Default select example">
+									<option selected value="NON">Non</option>
+									<option value="OUI">Oui</option>
+								</select>
+							</div>
+							</br>
+							<div class="input-group input-groupe-sm">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
+								</div>
+								<select class="form-select" name="FZ" aria-label="Default select example">
 									<option selected value="NON">Non</option>
 									<option value="OUI">Oui</option>
 								</select>

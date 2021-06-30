@@ -23,7 +23,7 @@
 				$querySuppNoir = mysqli_query($connexion,"UPDATE badge_noir SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
 				$querySuppBleu = mysqli_query($connexion,"UPDATE badge_bleu SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
 				$querySuppCafe = mysqli_query($connexion,"UPDATE cafe SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
-				$querySuppParking = mysqli_query($connexion,"UPDATE parking SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
+				$querySuppIndigo = mysqli_query($connexion,"UPDATE indigo SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
 				$querySuppAlarme = mysqli_query($connexion,"UPDATE alarme SET Id_Identité=NULL,Statut='RENDU' WHERE Id_Identité='$id'");
 				$querySuppressionId = mysqli_query($connexion,"DELETE FROM identites WHERE Id_Identité='$id'");
 				header("Location: accueil.php");
@@ -131,7 +131,7 @@
 												</div>
 												</br>";
 										}
-										$queryBadges = mysqli_query($connexion,"SELECT * FROM parking WHERE Id_Identité='$id'");
+										$queryBadges = mysqli_query($connexion,"SELECT * FROM indigo WHERE Id_Identité='$id'");
 										foreach($queryBadges as $badges){
 											$id_B = $badges['Id_Parking'];
 											echo "
@@ -139,12 +139,12 @@
 													<div class='input-group input-groupe-sm'>
 														<div class='input-group-prepend col-md'>
 															<div class='input-group-text'>
-																<input class='checkbox' type='checkbox' name='parking[]' value='$id_B' aria-label='Checkbox for following text input'>
-																<label for='parking'>$id_B</label>
+																<input class='checkbox' type='checkbox' name='indigo[]' value='$id_B' aria-label='Checkbox for following text input'>
+																<label for='indigo'>$id_B</label>
 															</div>
 														</div>
 														<div class='input-group-append col-md'>
-															<span class='input-group-text'>Parking</span>
+															<span class='input-group-text'>Indigo</span>
 														</div>
 														<div class='input-group-append col-md'>
 															<span class='input-group-text'>".$badges['Statut']."</span>
@@ -208,27 +208,27 @@
 									<div class="form-group">
 										<div class="row">
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="telecommande" id="flexRadioDefault1" onchange="afficheForm('tele','noir','bleu','cafe','parking','alarme')" checked>
+												<input class="form-check-input" type="radio" name="radioBadge" value="telecommande" id="flexRadioDefault1" onchange="afficheForm('tele','noir','bleu','cafe','indigo','alarme')" checked>
 												<label class="form-check-label" for="flexRadioDefault1">Télécommande</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="badge_noir" id="flexRadioDefault2" onchange="afficheForm('noir','tele','bleu','cafe','parking','alarme')">
+												<input class="form-check-input" type="radio" name="radioBadge" value="badge_noir" id="flexRadioDefault2" onchange="afficheForm('noir','tele','bleu','cafe','indigo','alarme')">
 												<label class="form-check-label" for="flexRadioDefault2">Badge Noir</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="badge_bleu" id="flexRadioDefault3" onchange="afficheForm('bleu','tele','noir','cafe','parking','alarme')">
+												<input class="form-check-input" type="radio" name="radioBadge" value="badge_bleu" id="flexRadioDefault3" onchange="afficheForm('bleu','tele','noir','cafe','indigo','alarme')">
 												<label class="form-check-label" for="flexRadioDefault3">Badge Bleu</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="cafe" id="flexRadioDefault4" onchange="afficheForm('cafe','tele','noir','bleu','parking','alarme')">
+												<input class="form-check-input" type="radio" name="radioBadge" value="cafe" id="flexRadioDefault4" onchange="afficheForm('cafe','tele','noir','bleu','indigo','alarme')">
 												<label class="form-check-label" for="flexRadioDefault4">Café</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="parking" id="flexRadioDefault5" onchange="afficheForm('parking','tele','noir','bleu','cafe','alarme')">
-												<label class="form-check-label" for="flexRadioDefault4">Parking</label>
+												<input class="form-check-input" type="radio" name="radioBadge" value="indigo" id="flexRadioDefault5" onchange="afficheForm('indigo','tele','noir','bleu','cafe','alarme')">
+												<label class="form-check-label" for="flexRadioDefault4">Indigo</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="radioBadge" value="alarme" id="flexRadioDefault6" onchange="afficheForm('alarme','tele','noir','bleu','cafe','parking')">
+												<input class="form-check-input" type="radio" name="radioBadge" value="alarme" id="flexRadioDefault6" onchange="afficheForm('alarme','tele','noir','bleu','cafe','indigo')">
 												<label class="form-check-label" for="flexRadioDefault4">Alarme</label>
 											</div>
 										</div>
@@ -293,16 +293,16 @@
 												</select>
 											</div>
 										</div>
-										<div class="row cacher" id="parking">
+										<div class="row cacher" id="indigo">
 											<div class="input-group input-groupe-sm">
 												<div class="input-group-prepend">
-													<span class="input-group-text" id="basic-addon1">Le badge Parking</span>
+													<span class="input-group-text" id="basic-addon1">Le badge Indigo</span>
 												</div>
-												<select class="form-select" name="parking">
+												<select class="form-select" name="indigo">
 													<?php
-														$queryBadgesDispos = mysqli_query($connexion,"SELECT * FROM parking WHERE Id_Identité IS NULL");
-														foreach($queryBadgesDispos as $parking){
-															echo "<option value=".$parking['Id_Parking'].">".$parking['Id_Parking']."</option>";
+														$queryBadgesDispos = mysqli_query($connexion,"SELECT * FROM indigo WHERE Id_Identité IS NULL");
+														foreach($queryBadgesDispos as $indigo){
+															echo "<option value=".$indigo['Id_Parking'].">".$indigo['Id_Parking']."</option>";
 														}
 													?>
 												</select>
@@ -477,19 +477,19 @@
 							</div>
 							</br>
 							<div class="form-group">
-								<legend>Badge Parking</legend>
+								<legend>Badge Indigo</legend>
 								
 								<?php 
-									$queryRecupStatutParking = mysqli_query($connexion,"SELECT * FROM parking WHERE Id_Identité=".$id);
+									$queryRecupStatutIndigo = mysqli_query($connexion,"SELECT * FROM indigo WHERE Id_Identité=".$id);
 
-									foreach($queryRecupStatutParking as $badge){	
+									foreach($queryRecupStatutIndigo as $badge){	
 									echo "
 									<div class='input-group input-groupe-sm'>
-										<input class='form-control' type='text' id='id_parking' name='id_parking[]' value=".$badge['Id_Parking']." readonly='readonly'/>
+										<input class='form-control' type='text' id='id_indigo' name='id_indigo[]' value=".$badge['Id_Parking']." readonly='readonly'/>
 										<div class='input-group-prepend'>
 											<span class='input-group-text' id='basic-addon1'>Statut</span>
 										</div>
-										<select class='form-select' name='parking[]' aria-label='Default select example'>";
+										<select class='form-select' name='indigo[]' aria-label='Default select example'>";
 										StatutModBadges($badge['Statut']);
 										echo"
 										</select>
@@ -522,21 +522,28 @@
 									</br>";
 									}
 								?>
+								</br>
 							</div>
-							</br></br>
+							</br>
 							<legend>Autres Badges</legend>
 							<div class="form-group">
 								<div class="input-group input-groupe-sm">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
+										<span class="input-group-text" id="basic-addon1">Parking</span>
 									</div>
-									<select class="form-select" name="FZ" aria-label="Default select example">
-										<?php if($user_choisi['Bureau_FZ'] == "OUI"){ ?>
+									<select class="form-select" name="parking" aria-label="Default select example">
+										<?php if($user_choisi['Parking'] == "OUI"){ ?>
 											<option selected value="OUI">Oui</option>
 											<option value="NON">Non</option>
-										<?php }else{ ?>
+											<option value="CODE">Code</option>
+										<?php }elseif($user_choisi['Parking'] == "NON"){ ?>
 											<option value="OUI">Oui</option>
 											<option selected value="NON">Non</option>
+											<option value="CODE">Code</option>
+										<?php }else{ ?>
+											<option value="OUI">Oui</option>
+											<option value="NON">Non</option>
+											<option selected value="CODE">Code</option>
 										<?php } ?>
 									</select>
 								</div>
@@ -562,6 +569,21 @@
 									</div>
 									<select class="form-select" name="bureau" aria-label="Default select example">
 										<?php if($user_choisi['Accès_Bureau'] == "OUI"){ ?>
+											<option selected value="OUI">Oui</option>
+											<option value="NON">Non</option>
+										<?php }else{ ?>
+											<option value="OUI">Oui</option>
+											<option selected value="NON">Non</option>
+										<?php } ?>
+									</select>
+								</div>
+								</br>
+								<div class="input-group input-groupe-sm">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">Bureau FZ</span>
+									</div>
+									<select class="form-select" name="FZ" aria-label="Default select example">
+										<?php if($user_choisi['Bureau_FZ'] == "OUI"){ ?>
 											<option selected value="OUI">Oui</option>
 											<option value="NON">Non</option>
 										<?php }else{ ?>

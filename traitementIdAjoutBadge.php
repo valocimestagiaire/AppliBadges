@@ -29,9 +29,9 @@
 		$typeId = "Id_Café";
 		$idBadge = $_POST['bCafe'];
 	}
-	elseif($typeBadge == "parking"){
+	elseif($typeBadge == "indigo"){
 		$typeId = "Id_Parking";
-		$idBadge = $_POST['parking'];
+		$idBadge = $_POST['indigo'];
 	}
 	else{
 		$typeId = "Id_Alarme";

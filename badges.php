@@ -33,13 +33,14 @@
 						<tr>
 							<th>Nom</th>
 							<th>Prénom</th>
+							<th>Parking</th>
 							<th>Pass</th>
 							<th>Accès Bureau</th>
 							<th>Bureau FZ</th>
 							<th>Période d'accès</th>
 						</tr>
 						<tr>
-							<?php echo"<td>".$user_choisi['Nom']."</td><td>".$user_choisi['Prénom']."</td><td>".$user_choisi['Pass']."</td><td>".$user_choisi['Accès_Bureau']."</td><td>".$user_choisi['Bureau_FZ']."</td><td>".$user_choisi['Période']."</td>" ?>
+							<?php echo"<td>".$user_choisi['Nom']."</td><td>".$user_choisi['Prénom']."</td><td>".$user_choisi['Parking']."</td><td>".$user_choisi['Pass']."</td><td>".$user_choisi['Accès_Bureau']."</td><td>".$user_choisi['Bureau_FZ']."</td><td>".$user_choisi['Période']."</td>" ?>
 						</tr>
 					</table>
 				</div>
@@ -116,12 +117,12 @@
 				<div class="col">
 					<table class="table table-striped table-dark table-hover table-bordered text-center d-flex justify-content-center">
 						<tr>
-							<th>Badge Parking</th>
+							<th>Badge Indigo</th>
 							<th>Statut</th>
 						</tr>
 						<?php
 							
-							$queryTele = mysqli_query($connexion,"SELECT Id_Parking,Statut FROM parking WHERE Id_Identité=".$idChoisi);
+							$queryTele = mysqli_query($connexion,"SELECT Id_Parking,Statut FROM indigo WHERE Id_Identité=".$idChoisi);
 							foreach($queryTele as $id){
 								echo"<tr><td>".$id['Id_Parking']."</td><td>".$id['Statut']."</td></tr>";
 							}

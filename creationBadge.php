@@ -32,7 +32,7 @@
 											<option value="badge_noir">Badge Noir</option>
 											<option value="badge_bleu">Badge Bleu</option>
 											<option value="cafe">Café</option>
-											<option value="parking">Parking</option>
+											<option value="indigo">Indigo</option>
 											<option value="alarme">Alarme</option>
 										</select>
 									</div>

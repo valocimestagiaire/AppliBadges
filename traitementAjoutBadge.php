@@ -25,7 +25,7 @@
 			header("Location: accueil.php?erreur=idLong12");
 			exit(0);
 		}
-	}elseif($badge == "badge_noir" OR $badge == "badge_bleu" OR $badge == "parking"){
+	}elseif($badge == "badge_noir" OR $badge == "badge_bleu" OR $badge == "indigo"){
 		if(strlen($idBadge) > 10){
 			header("Location: accueil.php?erreur=idLong10");
 			exit(0);

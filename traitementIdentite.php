@@ -13,9 +13,10 @@
 	if(!empty($_POST['nom']) && !empty($_POST['prenom'])){
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom'];
-		$fz = $_POST['FZ'];
+		$parking = $_POST['parking'];
 		$pass = $_POST['pass'];
 		$bureau = $_POST['bureau'];
+		$fz = $_POST['FZ'];
 		$periode = $_POST['periode'];
 		
 		if(strlen($nom)>20 OR strlen($prenom)>20){
@@ -34,7 +35,7 @@
 		}
 		
 		
-		$queryIdentite = mysqli_query($connexion,"INSERT INTO identites (Nom,Prénom,Pass,Accès_Bureau,Bureau_FZ,Période) VALUES ('$nom','$prenom','$pass','$bureau','$fz','$periode')");
+		$queryIdentite = mysqli_query($connexion,"INSERT INTO identites (Nom,Prénom,Parking,Pass,Accès_Bureau,Bureau_FZ,Période) VALUES ('$nom','$prenom','$parking','$pass','$bureau','$fz','$periode')");
 		
 		header("Location: accueil.php");
 		mysqli_close($connexion);			

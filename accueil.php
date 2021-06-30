@@ -3,7 +3,6 @@
 	<head>
 		<?php include 'head.php'; ?>
 		<title>VALOCIME/ Application Badges - Accueil</title>
-		
 	</head>
 	<body>
 		<?php
@@ -27,6 +26,7 @@
 				<th>Badge Bleu</th>
 				<th>Café</th>
 				<th>Alarme Verisure</th>
+				<th>Indigo</th>
 				<th>Parking</th>
 				<th>Pass</th>
 				<th>Accès Bureau</th>
@@ -36,7 +36,7 @@
 			<?php
 				$connexion = connexion();
 				
-				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Pass,Accès_Bureau,Période,Bureau_FZ FROM identites ORDER BY Nom");
+				$query = mysqli_query($connexion,"SELECT Id_Identité,Nom,Prénom,Parking,Pass,Accès_Bureau,Période,Bureau_FZ FROM identites ORDER BY Nom");
 				
 				foreach($query as $id){
 					$tele = lastBadge("telecommande","Id_Télécommande",$connexion,$id);
@@ -44,7 +44,7 @@
 					$badgeB = lastBadge("badge_bleu","Id_Badge_Bleu",$connexion,$id);
 					$cafe = lastBadge("cafe","Id_Café",$connexion,$id);
 					$alarme = lastBadge("alarme","Id_Alarme",$connexion,$id);
-					$parking = lastBadge("parking","Id_Parking",$connexion,$id);
+					$indigo = lastBadge("indigo","Id_Parking",$connexion,$id);
 					
 					echo"<tr class='rowTable'>
 							<td class='colonneCachee align-middle'>".$id['Id_Identité']."</td>
@@ -55,7 +55,8 @@
 							<td class='justify-content-center align-middle'>".$badgeB[0]."".$badgeB[1]."</td>
 							<td class='justify-content-center align-middle'>".$cafe[0]."".$cafe[1]."</td>
 							<td class='justify-content-center align-middle'>".$alarme[0]."".$alarme[1]."</td>
-							<td class='justify-content-center align-middle'>".$parking[0]."".$parking[1]."</td>
+							<td class='justify-content-center align-middle'>".$indigo[0]."".$indigo[1]."</td>
+							<td class='align-middle'>".$id['Parking']."</td>
 							<td class='align-middle'>".$id['Pass']."</td>
 							<td class='align-middle'>".$id['Accès_Bureau']."</td>
 							<td class='align-middle'>".$id['Bureau_FZ']."</td>

@@ -73,14 +73,14 @@
 					}
 				}
 				
-				$queryIdBadgeP = mysqli_query($connexion,"SELECT * FROM parking LEFT JOIN identites ON parking.Id_Identité=identites.Id_Identité WHERE Id_Parking LIKE '%$id%'");
+				$queryIdBadgeP = mysqli_query($connexion,"SELECT * FROM indigo LEFT JOIN identites ON indigo.Id_Identité=identites.Id_Identité WHERE Id_Parking LIKE '%$id%'");
 				if($nb_lignes = mysqli_num_rows($queryIdBadgeP) > 0){
 					foreach($queryIdBadgeP as $badgeP){
 						if(!isset($badgeP['Nom'])){
 							$badgeP['Nom'] = "Non Attribué";
 							$badgeP['Prénom'] = "Non Attribué";
 						}
-						echo"<tr><td>".$badgeP['Nom']."</td><td>".$badgeP['Prénom']."</td><td>Badge Parking</td><td>".$badgeP['Id_Parking']."</td><td>".$badgeP['Statut']."</td></tr>";
+						echo"<tr><td>".$badgeP['Nom']."</td><td>".$badgeP['Prénom']."</td><td>Badge Indigo</td><td>".$badgeP['Id_Parking']."</td><td>".$badgeP['Statut']."</td></tr>";
 					}
 				}
 				

@@ -15,9 +15,10 @@
 		$id = $_POST['id'];
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom'];
-		$FZ = $_POST['FZ'];
+		$parking = $_POST['parking'];
 		$pass = $_POST['pass'];
 		$bureau = $_POST['bureau'];
+		$FZ = $_POST['FZ'];
 		$periode = $_POST['periode'];
 		
 		if(strlen($nom) > 20 OR strlen($prenom) > 20){
@@ -27,7 +28,7 @@
 		
 		$connexion = connexion();
 
-		$queryUpdateIdentite = mysqli_query($connexion,"UPDATE identites SET Nom='$nom',Prénom='$prenom',Pass='$pass',Accès_Bureau='$bureau',Bureau_FZ='$FZ',Période='$periode' WHERE Id_Identité='$id'");
+		$queryUpdateIdentite = mysqli_query($connexion,"UPDATE identites SET Nom='$nom',Prénom='$prenom',Parking='$parking',Pass='$pass',Accès_Bureau='$bureau',Bureau_FZ='$FZ',Période='$periode' WHERE Id_Identité='$id'");
 		
 		if(isset($_POST['id_tele']) and isset($_POST['tele'])){
 			foreach(array_combine($_POST['id_tele'],$_POST['tele']) as $idTele => $tele){
@@ -52,9 +53,9 @@
 			}
 		}
 		
-		if(isset($_POST['id_parking']) and isset($_POST['parking'])){
-			foreach(array_combine($_POST['id_parking'],$_POST['parking']) as $idParking => $parking){
-				$queryUpdateParking = mysqli_query($connexion,"UPDATE parking SET Statut='$parking' WHERE Id_Identité='$id' and Id_Parking='$idParking'");
+		if(isset($_POST['id_indigo']) and isset($_POST['indigo'])){
+			foreach(array_combine($_POST['id_indigo'],$_POST['indigo']) as $idindigo => $indigo){
+				$queryUpdateIndigo = mysqli_query($connexion,"UPDATE indigo SET Statut='$indigo' WHERE Id_Identité='$id' and Id_Parking='$idindigo'");
 			}
 		}
 		

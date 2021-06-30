@@ -35,9 +35,9 @@
 		}
 	}
 	
-	if(isset($_POST['parking'])){
-		foreach($_POST['parking'] as $parking){
-			$query = mysqli_query($connexion,"UPDATE parking SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Parking = '$parking'");
+	if(isset($_POST['indigo'])){
+		foreach($_POST['indigo'] as $indigo){
+			$query = mysqli_query($connexion,"UPDATE indigo SET Id_Identité = NULL, Statut = 'RENDU' WHERE Id_Identité = '$id' AND Id_Parking = '$indigo'");
 		}
 	}
 	

@@ -49,9 +49,9 @@
 					foreach($queryBadgeCafe as $cafe){
 						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Café</td><td>".$cafe['Id_Café']."</td></tr>";
 					}
-					$queryBadgeParking = mysqli_query($connexion,"SELECT * FROM parking WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
-					foreach($queryBadgeParking as $parking){
-						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Parking</td><td>".$parking['Id_Parking']."</td></tr>";
+					$queryBadgeIndigo = mysqli_query($connexion,"SELECT * FROM indigo WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
+					foreach($queryBadgeIndigo as $indigo){
+						echo"<tr><td class='nom'>".$id['Nom']."</td><td class='prenom'>".$id['Prénom']."</td><td>Indigo</td><td>".$indigo['Id_Parking']."</td></tr>";
 					}
 					$queryBadgeAlarme = mysqli_query($connexion,"SELECT * FROM alarme WHERE Id_Identité=".$id['Id_Identité']." AND Statut='$status'");
 					foreach($queryBadgeAlarme as $alarme){
