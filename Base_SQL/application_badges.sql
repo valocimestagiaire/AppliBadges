@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 21 juin 2021 à 07:08
+-- Généré le : mer. 30 juin 2021 à 09:27
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.4.1
 
@@ -60,12 +60,12 @@ CREATE TABLE `badge_bleu` (
 --
 
 INSERT INTO `badge_bleu` (`Id_Badge_Bleu`, `Statut`, `Id_Identité`) VALUES
-('C412190E', 'RENDU', 1),
+('C412190E', 'RENDU', NULL),
 ('C412190F', 'ACTIF', 1),
 ('C412190G', 'ACTIF', 32),
 ('C412190H', 'ACTIF', NULL),
 ('C412190i', 'PERDU', 1),
-('C412190J', 'RENDU', NULL),
+('C412190J', 'ACTIF', 2),
 ('C412190K', 'RENDU', NULL);
 
 -- --------------------------------------------------------
@@ -86,8 +86,8 @@ CREATE TABLE `badge_noir` (
 
 INSERT INTO `badge_noir` (`Id_Badge_Noir`, `Statut`, `Id_Identité`) VALUES
 ('0378002187', 'RENDU', NULL),
-('0378002188', 'ACTIF', 1),
-('0378002189', 'RENDU', 2),
+('0378002188', 'RENDU', NULL),
+('0378002189', 'ACTIF', 2),
 ('0378002190', 'RENDU', NULL),
 ('0378002191', 'PRET', 1);
 
@@ -126,6 +126,7 @@ CREATE TABLE `identites` (
   `Id_Identité` int(11) NOT NULL,
   `Nom` varchar(20) NOT NULL,
   `Prénom` varchar(20) NOT NULL,
+  `Parking` enum('OUI','NON','CODE') NOT NULL DEFAULT 'NON',
   `Pass` enum('OUI','NON') NOT NULL DEFAULT 'NON',
   `Accès_Bureau` enum('OUI','NON') NOT NULL DEFAULT 'NON',
   `Bureau_FZ` enum('OUI','NON') NOT NULL DEFAULT 'NON',
@@ -136,29 +137,29 @@ CREATE TABLE `identites` (
 -- Déchargement des données de la table `identites`
 --
 
-INSERT INTO `identites` (`Id_Identité`, `Nom`, `Prénom`, `Pass`, `Accès_Bureau`, `Bureau_FZ`, `Période`) VALUES
-(1, 'aaa', 'aaa', 'NON', 'NON', 'OUI', 'Du Lundi au Vendredi'),
-(2, 'bbb', 'bbb', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(31, 'ccc', 'ccc', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
-(32, 'ESSAI', 'Essai', 'NON', 'OUI', 'NON', 'Du Lundi au Vendredi');
+INSERT INTO `identites` (`Id_Identité`, `Nom`, `Prénom`, `Parking`, `Pass`, `Accès_Bureau`, `Bureau_FZ`, `Période`) VALUES
+(1, 'aaa', 'aaa', 'OUI', 'NON', 'NON', 'OUI', 'Du Lundi au Vendredi'),
+(2, 'bbb', 'bbb', 'NON', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
+(31, 'ccc', 'ccc', 'NON', 'NON', 'NON', 'NON', 'Du Lundi au Vendredi'),
+(32, 'ESSAI', 'Essai', 'CODE', 'NON', 'OUI', 'NON', 'Du Lundi au Vendredi');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parking`
+-- Structure de la table `indigo`
 --
 
-CREATE TABLE `parking` (
+CREATE TABLE `indigo` (
   `Id_Parking` varchar(10) NOT NULL,
   `Statut` enum('ACTIF','PERDU','PRET','RENDU') NOT NULL,
   `Id_Identité` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `parking`
+-- Déchargement des données de la table `indigo`
 --
 
-INSERT INTO `parking` (`Id_Parking`, `Statut`, `Id_Identité`) VALUES
+INSERT INTO `indigo` (`Id_Parking`, `Statut`, `Id_Identité`) VALUES
 ('A12V85B470', 'PRET', 1),
 ('A12V85B471', 'RENDU', NULL),
 ('A12V85B472', 'RENDU', NULL),
@@ -254,9 +255,9 @@ ALTER TABLE `identites`
   ADD PRIMARY KEY (`Id_Identité`);
 
 --
--- Index pour la table `parking`
+-- Index pour la table `indigo`
 --
-ALTER TABLE `parking`
+ALTER TABLE `indigo`
   ADD PRIMARY KEY (`Id_Parking`),
   ADD KEY `relation identité-badge parking` (`Id_Identité`);
 
@@ -281,7 +282,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `identites`
 --
 ALTER TABLE `identites`
-  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `Id_Identité` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Contraintes pour les tables déchargées
@@ -312,9 +313,9 @@ ALTER TABLE `cafe`
   ADD CONSTRAINT `relation identité-badge café` FOREIGN KEY (`Id_Identité`) REFERENCES `identites` (`Id_Identité`);
 
 --
--- Contraintes pour la table `parking`
+-- Contraintes pour la table `indigo`
 --
-ALTER TABLE `parking`
+ALTER TABLE `indigo`
   ADD CONSTRAINT `relation identité-badge parking` FOREIGN KEY (`Id_Identité`) REFERENCES `identites` (`Id_Identité`);
 
 --
